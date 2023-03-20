@@ -19,6 +19,7 @@ export class ListaArticoliComponent implements OnInit{
   articoli:Articolo[]=[];
   profileUrl!:Observable<string >;
   id!:string;
+  l:string='card';
   Url='';
 
   constructor(private artSrv: ArticoliService, private db: DbService,private route: ActivatedRoute, private router:Router,private storage:AngularFireStorage) {
@@ -55,6 +56,12 @@ export class ListaArticoliComponent implements OnInit{
     ImmagineComponent.indice=0;
     //this.articoli.subscribe(res=>ImmagineComponent.articoli=res);
     this.router.navigate(['/lista']);
+  }
+  editArticolo(id:string){
+    console.log('ID:',id);
+
+    this.router.navigateByUrl(`/update?id=${id}`);
+
   }
 
 }

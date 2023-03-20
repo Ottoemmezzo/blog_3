@@ -1,3 +1,11 @@
 
-<!--<img  adHost *ngIf="profileUrl" class="card-image" [src]="profileUrl | async "> adhost è legato a load component-->
-<img   *ngIf="profileUrl" class="card-image" [src]="profileUrl | async ">
+
+<!--<div *ngif="l=='card'; else elseblock">
+  <img  mat-card-xl-image  *ngIf="profileUrl" class="card-image" [src]="profileUrl | async ">
+</div>
+<ng-template #elseblock>
+  <img  width="60%"  *ngIf="profileUrl" class="card-image" [src]="profileUrl | async ">
+</ng-template>-->
+<div>
+<img  width="100%"  *ngIf="profileUrl" class="card-image" [src]="profileUrl | async ">
+</div>

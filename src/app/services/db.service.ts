@@ -34,5 +34,9 @@ export class DbService {
 
 
   }
+  edit(id:string,newArt:Articolo){
+    this.firestore.collection('articoli').doc(id).update(newArt);
+
+  }
   }
 

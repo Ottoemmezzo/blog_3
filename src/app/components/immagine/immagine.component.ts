@@ -14,6 +14,7 @@ export class ImmagineComponent implements OnInit {
   imgUrl='';
   articoli:Articolo[]=[];
   articoli$!: Observable<any[]>;
+  @Input() l:string='card';
   @Input() imgPath:string="";
 
   profileUrl: any; //Observable <string | null >;
@@ -28,6 +29,7 @@ export class ImmagineComponent implements OnInit {
 
       this.ref=this.storage.ref(this.imgPath);
       this.profileUrl= this.ref.getDownloadURL();
+      //if(this.l!='card')
   }
 
 }

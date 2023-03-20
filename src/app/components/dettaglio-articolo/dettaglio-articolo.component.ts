@@ -34,7 +34,9 @@ export class DettaglioArticoloComponent implements OnInit{
       this.id = params['id'];
       this.db.getArt(this.id).subscribe(res=>{
         res.forEach(data=>{
-          if(data.id==this.id) this.doc=data;
+          if(data.id==this.id)this.doc=data;
+
+
         });
 
       });
