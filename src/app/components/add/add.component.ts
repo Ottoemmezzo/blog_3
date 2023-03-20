@@ -7,6 +7,7 @@ import { finalize, Observable } from 'rxjs';
 import { FireStorageService } from 'src/app/services/fire-storage.service';
 import { Router } from '@angular/router';
 import { ImmagineComponent } from '../immagine/immagine.component';
+import { imgItem } from '../imgItem';
 
 
 
@@ -18,7 +19,7 @@ import { ImmagineComponent } from '../immagine/immagine.component';
 export class AddComponent {
 
   filePath!:string;
-  fPath!:string;
+  fPath!:imgItem;
   form:FormGroup;
   categorie=['c#','Angular','Javascript'];
   autori=['Sebastian','Daniele','Massimo'];
@@ -39,7 +40,7 @@ export class AddComponent {
 
   }
   onSubmit(){
-    this.db.add(this.form.value,this.fPath);
+    this.db.add(this.form.value,this.fPath.fPath);
     console.log(this.form.value);
     ImmagineComponent.indice=0;
     //this.articoli.subscribe(res=>ImmagineComponent.articoli=res);
@@ -50,10 +51,10 @@ export class AddComponent {
 
   }
   uploadFile(event:any,filePath:string){
-    this.fPath=filePath.slice(12,filePath.length);
+    this.fPath.fPath=filePath.slice(12,filePath.length);
     console.log("Path ripulito:",this.fPath);
 
-    this.st.uploadFile(event,this.fPath)
+    this.st.uploadFile(event,this.fPath.fPath)
   }
 
 }
