@@ -1,0 +1,39 @@
+/*:host {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}*/
+.modulo-intero {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+
+  .titolo-modulo {
+    width: 100%;
+
+    mat-form-field {
+      width: 100%;
+      font-size: 2.5em;
+    }
+  }
+    .selettori {
+      width: 100%;
+
+      mat-form-field {
+        width: 32.4%;
+        margin:6px;
+      }
+    }
+    .testo-articolo{
+      width:100%;
+      height:65vh;
+      mat-form-field {
+        width: 100%;
+        height:100%;
+      }
+
+    }
+
+
+}

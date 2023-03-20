@@ -1,0 +1,22 @@
+<mat-toolbar color="warn">
+  <div class="barraApp">
+    <div class="sezLogo">
+      <span routerLinkActive="active" routerLink="">Sebastian Lazzeri</span>
+    </div>
+    <div class="sezButtons">
+      <button mat-button routerLinkActive="active" color="accent" routerLink="/lista">Blog</button>
+      <!--<button mat-button routerLinkActive="active" color="accent" routerLink="/portfolio">Portfolio</button>-->
+    </div>
+    <div class="sezAccess">
+      <span>Accedi</span>
+      <button mat-mini-fab [matMenuTriggerFor]="menu"color="primary">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLinkActive="active" routerLink="/add">Nuovo Articolo</button>
+      <button mat-menu-item>Item 2</button>
+</mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
+

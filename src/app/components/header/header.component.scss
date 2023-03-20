@@ -1,0 +1,35 @@
+
+.barraApp{
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .sezLogo{
+
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+
+    span {
+
+      font-size: 3em;
+
+    }
+  }
+  .sezAccess{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    width: 120px;
+    button{
+
+      mat-icon{
+        color: white;
+
+      }
+    }
+  }
+
+}

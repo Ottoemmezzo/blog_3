@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "blog-personale-f2d9d": {
+      "hosting": {
+        "blog_3": [
+          "blog-personale"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "blog-personale-f2d9d"
+  }
+}
