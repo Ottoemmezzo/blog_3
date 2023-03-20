@@ -1,3 +1,3 @@
 
-<img  adHost *ngIf="profileUrl" class="card-image" [src]="profileUrl | async ">
-
+<!--<img  adHost *ngIf="profileUrl" class="card-image" [src]="profileUrl | async "> adhost è legato a load component-->
+<img   *ngIf="profileUrl" class="card-image" [src]="profileUrl | async ">

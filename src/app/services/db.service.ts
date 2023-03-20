@@ -11,7 +11,7 @@ export class DbService {
   constructor(private firestore: AngularFirestore) {
   }
 
-  loadArticoli():Observable<Articolo[]>{
+  loadArticoli(){
      return this.firestore.collection('articoli').valueChanges({idField:'id'}) as Observable<Articolo[]>;
 
   }

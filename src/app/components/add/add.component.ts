@@ -19,7 +19,7 @@ import { imgItem } from '../imgItem';
 export class AddComponent {
 
   filePath!:string;
-  fPath!:imgItem;
+  updPath!:string;
   form:FormGroup;
   categorie=['c#','Angular','Javascript'];
   autori=['Sebastian','Daniele','Massimo'];
@@ -40,8 +40,8 @@ export class AddComponent {
 
   }
   onSubmit(){
-    this.db.add(this.form.value,this.fPath.fPath);
-    console.log(this.form.value);
+    this.db.add(this.form.value,this.updPath);
+    console.log("Post aggiunto!",this.form.value, ImmagineComponent.indice);
     ImmagineComponent.indice=0;
     //this.articoli.subscribe(res=>ImmagineComponent.articoli=res);
     //this.router.navigate(['/lista']);
@@ -51,10 +51,10 @@ export class AddComponent {
 
   }
   uploadFile(event:any,filePath:string){
-    this.fPath.fPath=filePath.slice(12,filePath.length);
-    console.log("Path ripulito:",this.fPath);
+    this.updPath=filePath.slice(12,filePath.length);
+    console.log("Path ripulito:",this.updPath);
 
-    this.st.uploadFile(event,this.fPath.fPath)
+    this.st.uploadFile(event,this.updPath)
   }
 
 }

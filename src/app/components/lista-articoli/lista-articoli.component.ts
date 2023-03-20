@@ -15,17 +15,19 @@ import { ImmagineComponent } from '../immagine/immagine.component';
   styleUrls: ['./lista-articoli.component.scss']
 })
 export class ListaArticoliComponent implements OnInit{
-  articoli: Observable<any[]>;
+  articoli$!: Observable<any[]>;
+  articoli:Articolo[]=[];
   profileUrl!:Observable<string >;
   id!:string;
   Url='';
 
   constructor(private artSrv: ArticoliService, private db: DbService,private route: ActivatedRoute, private router:Router,private storage:AngularFireStorage) {
-    this.articoli = db.loadArticoli();
+
   }
   ngOnInit(): void {
+    this.articoli$ = this.db.loadArticoli();
     ImmagineComponent.indice=0;
-    this.articoli.subscribe(res=>ImmagineComponent.articoli=res);
+    this.articoli$.subscribe(res=>this.articoli=res);
 
   }
 
