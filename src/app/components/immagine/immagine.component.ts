@@ -9,7 +9,7 @@ import { InterImgComponent } from 'src/app/model/interImg.component';
 import { imgItem } from '../imgItem';
 
 export interface typeImg{
-  fPath:string;
+  path:string;
 }
 
 @Component({
@@ -57,7 +57,7 @@ export class ImmagineComponent implements OnInit {
       viewContainerRef.clear();
       let img=new ImmagineComponent(this.artSrv,this.storage,this.storagesrv);
       const componentRef = viewContainerRef.createComponent<typeImg>(this.fPath.fPath);
-      componentRef.instance.fPath = this.fPath.fPath;
+      componentRef.instance.path = this.fPath.fPath;
 
       this.ref=this.storage.ref(this.fPath.fPath);
       this.profileUrl= this.ref.getDownloadURL();
