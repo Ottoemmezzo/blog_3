@@ -49,13 +49,14 @@
         <mat-label>Testo Articolo:</mat-label>
         <textarea matInput formControlName="corpo"></textarea>
       </mat-form-field>
+      <div class="form-action">
+        <button mat-fab color="primary" type="submit"[disabled]="!form.valid" >
+          <mat-icon>check_circle</mat-icon>
+        </button>
+      </div>
     </div>
 
-    <div class="form-action">
-      <button mat-fab color="primary" type="submit"[disabled]="!form.valid" >
-        <mat-icon>check_circle</mat-icon>
-      </button>
-    </div>
+
   </form>
 
 </div>

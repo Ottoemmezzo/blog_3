@@ -46,7 +46,7 @@ export class AddComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    this.categorie=this.db.categorie;
+   this.db.loadCategorie().subscribe(c=>this.categorie=c);
     console.log("componente ADD, categorie:",this.categorie);
 
 

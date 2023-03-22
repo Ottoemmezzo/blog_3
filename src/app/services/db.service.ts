@@ -87,7 +87,7 @@ export class DbService {
   add(articolo: Articolo, path: string, cat: Categoria) {
     console.log('questo è il dato', articolo);
     articolo.imgUrl = path;
-    this.firestore.collection(`/categorie/${cat.id}/articoli`).doc().set(articolo);
+    this.firestore.collection(`articoli`).doc().set(articolo);
     //this.firestore.collection('articoli').doc().set(articolo);
 
   }
