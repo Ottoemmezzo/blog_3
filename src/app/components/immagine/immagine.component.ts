@@ -14,7 +14,8 @@ export class ImmagineComponent implements OnInit {
   imgUrl='';
   articoli:Articolo[]=[];
   articoli$!: Observable<any[]>;
-  @Input() l:string='card';
+  @Input() l:number=300;
+  @Input() h:number=200;
   @Input() imgPath:string="";
 
   profileUrl: any; //Observable <string | null >;
@@ -22,14 +23,14 @@ export class ImmagineComponent implements OnInit {
   ref!:AngularFireStorageReference;
 
 
-  constructor(private db:DbService,private storage:AngularFireStorage){
+  constructor(private storage:AngularFireStorage){
   }
   ngOnInit(): void {
     console.log('Inizializzo immagine. Percorso Storage:',this.imgPath);
 
       this.ref=this.storage.ref(this.imgPath);
       this.profileUrl= this.ref.getDownloadURL();
-      //if(this.l!='card')
+
   }
 
 }

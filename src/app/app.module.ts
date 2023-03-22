@@ -53,6 +53,7 @@ import { AngularFireStorageModule, BUCKET } from '@angular/fire/compat/storage';
 import { DelComponent } from './components/del/del.component';
 import { ImmagineComponent } from './components/immagine/immagine.component';
 import { UpdArticoloComponent } from './components/upd-articolo/upd-articolo.component';
+import { CardArticoloComponent } from './components/card-articolo/card-articolo.component';
 
 
 
@@ -99,7 +100,7 @@ import { UpdArticoloComponent } from './components/upd-articolo/upd-articolo.com
     MatGridListModule
 
   ],
-  declarations: [ AppComponent, LandingComponent, ListaArticoliComponent, HeaderComponent, AddComponent, DettaglioArticoloComponent, DelComponent, ImmagineComponent, UpdArticoloComponent ],
+  declarations: [ AppComponent, LandingComponent, ListaArticoliComponent, HeaderComponent, AddComponent, DettaglioArticoloComponent, DelComponent, ImmagineComponent, UpdArticoloComponent, CardArticoloComponent ],
   bootstrap: [ AppComponent ],
   providers: [
     ScreenTrackingService,UserTrackingService,

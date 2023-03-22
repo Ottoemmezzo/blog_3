@@ -1,11 +1,33 @@
-.articoli-gruppo {
-  width:95%;
-  margin:0 auto;
-  display:flex;
+.head-lights{
+  width:80%;
+  height:30vh;
+}
+.list-group {
+  width: 80%;
+  //background-color: cadetblue;
+  margin: 0 auto;
+  display: flex;
   flex-wrap: wrap;
-  //justify-content:space-around;
-  .articolo-card {
-    width: 400px;
-    margin:20px;
+  justify-content:center;
+  .group-container {
+    margin: 20px;
+    background-color: rgb(132, 127, 127);
+    color: white;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    h2 {
+      text-align: center;
+      width: 100%;
+      background-color: crimson;
+      font-size: 2em;
+
+    }
+        app-card-articolo {
+          margin: 20px;
+        }
+
+
   }
 }

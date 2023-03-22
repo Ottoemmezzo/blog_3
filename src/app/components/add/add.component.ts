@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import {NgForm} from '@angular/forms';
 import { DbService } from 'src/app/services/db.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize, Observable } from 'rxjs';
 import { FireStorageService } from 'src/app/services/fire-storage.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ImmagineComponent } from '../immagine/immagine.component';
 import { imgItem } from '../imgItem';
+import { Categoria } from 'src/app/model/categoria';
 
 
 
@@ -16,19 +17,24 @@ import { imgItem } from '../imgItem';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss']
 })
-export class AddComponent {
-
+export class AddComponent implements OnInit{
+  selCat!:Categoria;
+  id!:string;
   filePath!:string;
-  updPath!:string;
+  updPath:string="";
   form:FormGroup;
-  categorie=['c#','Angular','Javascript'];
+  categorie:Categoria[]=[];
   autori=['Sebastian','Daniele','Massimo'];
   titolo=new FormControl("");
   categoria=new FormControl("");
   corpo=new FormControl("");
   autore=new FormControl("");
   urlImg=new FormControl("");
-  constructor(fb:FormBuilder,private db:DbService, private st:FireStorageService, private router:Router){
+  constructor(fb:FormBuilder,
+    private db:DbService,
+    private st:FireStorageService,
+    private route:ActivatedRoute,
+    private router:Router){
     this.form=fb.group({
       "titolo":this.titolo,
       "categoria":this.categoria,
@@ -39,8 +45,20 @@ export class AddComponent {
     });
 
   }
+  ngOnInit(): void {
+    this.categorie=this.db.categorie;
+    console.log("componente ADD, categorie:",this.categorie);
+
+
+  }
   onSubmit(){
-    this.db.add(this.form.value,this.updPath);
+
+    this.categorie.forEach(c=>{
+      if(c.nome==this.categoria.value) this.selCat=c;
+    })
+    this.db.add(this.form.value,this.updPath,this.selCat);
+    //this.db.upd(this.id,this.categoria.value,this.form.value);
+    //this.db.add(this.form.value,'',this.selCat);
     console.log("Post aggiunto!",this.form.value, ImmagineComponent.indice);
     ImmagineComponent.indice=0;
     //this.articoli.subscribe(res=>ImmagineComponent.articoli=res);

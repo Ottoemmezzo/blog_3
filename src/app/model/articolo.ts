@@ -3,5 +3,6 @@ export interface Articolo {
   titolo:string,
   imgUrl:string,
   corpo:string,
-  autore:string
+  autore:string,
+  categoria:string
 }

@@ -1,41 +1,11 @@
 <app-header></app-header>
-<div class="articoli-gruppo">
-<mat-card class="articolo-card" *ngFor="let articolo of articoli$ | async; index as i;" >
+<div class="head-lights">
 
-  <mat-card-header >
-    <mat-card-title-group>
-
-    <mat-card-title >{{articolo.titolo}}</mat-card-title>
-
-  </mat-card-title-group>
-  </mat-card-header>
-  <app-immagine [imgPath]="articolo.imgUrl"></app-immagine>
-  <mat-card-content>
-
-
-
-
-    <p>{{articolo.corpo}}</p>
-  </mat-card-content>
-
-  <mat-card-actions class="course-actions">
-
-    <button (click)="openArticolo(articolo.id)" mat-button class="mat-raised-button mat-primary" >
-     LEGGI
-    </button>
-
-    <ng-container>
-      <ng-container>
-        <button mat-button (click)="editArticolo(articolo.id)" class="mat-raised-button mat-accent">
-          EDIT
-        </button>
-        <button mat-mini-fab color="warn" (click)="delArticolo(articolo.id)" >
-          <mat-icon>delete</mat-icon>
-        </button>
-      </ng-container>
+</div>
+<div class="list-group">
+  <div class="group-container" *ngFor="let cat of categorie">
+    <h2>{{cat.nome}}</h2>
+    <ng-container *ngFor="let art of articoli">
+      <app-card-articolo *ngIf="art.categoria==cat.nome" [cat]="cat.nome" [data]="art"></app-card-articolo>
     </ng-container>
-
-  </mat-card-actions>
-
-</mat-card>
 </div>

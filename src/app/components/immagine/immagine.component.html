@@ -6,6 +6,6 @@
 <ng-template #elseblock>
   <img  width="60%"  *ngIf="profileUrl" class="card-image" [src]="profileUrl | async ">
 </ng-template>-->
-<div>
-<img  width="100%"  *ngIf="profileUrl" class="card-image" [src]="profileUrl | async ">
+<div class="container">
+<img  [width]="l" [height]="h" *ngIf="profileUrl" class="card-image" [src]="profileUrl | async ">
 </div>

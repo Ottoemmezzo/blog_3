@@ -1,9 +1,11 @@
-div{
-  width:100%;
+.container{
+  //max-width: 300px;
+  //max-height:200px;
   display: flex;
   justify-content: center;
 .card-image{
   border: 2px solid red;
+  max-height: h;
 }
 }
 
