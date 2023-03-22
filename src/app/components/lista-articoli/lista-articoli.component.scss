@@ -27,7 +27,11 @@
         app-card-articolo {
           margin: 20px;
         }
-
+        .paginator {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
 
   }
 }

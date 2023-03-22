@@ -54,6 +54,8 @@ import { DelComponent } from './components/del/del.component';
 import { ImmagineComponent } from './components/immagine/immagine.component';
 import { UpdArticoloComponent } from './components/upd-articolo/upd-articolo.component';
 import { CardArticoloComponent } from './components/card-articolo/card-articolo.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 
 
@@ -97,7 +99,8 @@ import { CardArticoloComponent } from './components/card-articolo/card-articolo.
     MatSelectModule,
     ReactiveFormsModule,
     MatInputModule,
-    MatGridListModule
+    MatGridListModule,
+    MatPaginatorModule
 
   ],
   declarations: [ AppComponent, LandingComponent, ListaArticoliComponent, HeaderComponent, AddComponent, DettaglioArticoloComponent, DelComponent, ImmagineComponent, UpdArticoloComponent, CardArticoloComponent ],

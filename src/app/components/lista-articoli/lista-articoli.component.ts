@@ -10,6 +10,8 @@ import { ArticoliService } from '../articoli.service';
 import { ImmagineComponent } from '../immagine/immagine.component';
 import { Categoria } from 'src/app/model/categoria';
 
+import {PageEvent} from '@angular/material/paginator';
+
 @Component({
   selector: 'app-lista-articoli',
   templateUrl: './lista-articoli.component.html',
@@ -28,11 +30,35 @@ export class ListaArticoliComponent implements OnInit {
   Url = '';
   static progress=0;
   liste:Lista[]=[];
+  length = 50;
+  pageSize = 10;
+  pageIndex = 0;
+  pageSizeOptions = [5, 10, 25];
+
+  hidePageSize = false;
+  showPageSizeOptions = true;
+  showFirstLastButtons = true;
+  disabled = false;
+
+  pageEvent!: PageEvent;
+
 
 
   constructor(private artSrv: ArticoliService, private db: DbService, private route: ActivatedRoute, private router: Router, private storage: AngularFireStorage)
   {
 
+  }
+  handlePageEvent(e: PageEvent) {
+    this.pageEvent = e;
+    this.length = e.length;
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
+  }
+
+  setPageSizeOptions(setPageSizeOptionsInput: string) {
+    if (setPageSizeOptionsInput) {
+      this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
+    }
   }
   setArt(cat:Categoria){
     return this.db.loadArticoliBy(cat.nome);
