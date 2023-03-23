@@ -1,0 +1,30 @@
+<div class="login-dialog">
+  <div *ngIf="auth.user | async as user; else showLogin">
+    <h1>Hello {{ user.displayName }}!</h1>
+    <button (click)="logout()">Logout</button>
+  </div>
+  <ng-template #showLogin>
+
+      <div class="form-container">
+        <div>
+        <mat-label>{{error}}</mat-label>
+        </div>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput placeholder="pat@example.com" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your Password</mat-label>
+          <input matInput placeholder="password" [formControl]="password" required>
+          <mat-error *ngIf="password.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+      </div>
+
+
+    <p>Please login.</p>
+    <button (click)="loginGoogle()">Login with Google</button>
+
+    <button (click)="loginEmail()">Login with Email</button>
+  </ng-template>
+</div>

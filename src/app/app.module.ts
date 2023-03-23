@@ -33,7 +33,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 
 
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { FirebaseAppModule, initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
@@ -55,6 +55,12 @@ import { ImmagineComponent } from './components/immagine/immagine.component';
 import { UpdArticoloComponent } from './components/upd-articolo/upd-articolo.component';
 import { CardArticoloComponent } from './components/card-articolo/card-articolo.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatDialog, MatDialogModule, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/compat/auth';
+import firebase from 'firebase/compat/app';
+import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
+import { RegisterDialogComponent } from './components/register-dialog/register-dialog.component';
+
 
 
 
@@ -100,14 +106,18 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     ReactiveFormsModule,
     MatInputModule,
     MatGridListModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDialogModule,
+    AngularFireAuthModule,
+    FirebaseAppModule
 
   ],
-  declarations: [ AppComponent, LandingComponent, ListaArticoliComponent, HeaderComponent, AddComponent, DettaglioArticoloComponent, DelComponent, ImmagineComponent, UpdArticoloComponent, CardArticoloComponent ],
+  declarations: [ AppComponent, LandingComponent, ListaArticoliComponent, HeaderComponent, AddComponent, DettaglioArticoloComponent, DelComponent, ImmagineComponent, UpdArticoloComponent, CardArticoloComponent, LoginDialogComponent, RegisterDialogComponent ],
   bootstrap: [ AppComponent ],
   providers: [
     ScreenTrackingService,UserTrackingService,
-    {provide:BUCKET, useValue:'gs://blog-personale-f2d9d.appspot.com'}
+    {provide:BUCKET, useValue:'gs://blog-personale-f2d9d.appspot.com'},
+    //{ provide: AUTH_SETTINGS, useValue: { appVerificationDisabledForTesting: true } }
   ]
 })
 export class AppModule {}

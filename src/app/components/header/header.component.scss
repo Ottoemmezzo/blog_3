@@ -21,8 +21,8 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
-    width: 120px;
+    overflow: clip;
+    width: 500px;
     button{
 
       mat-icon{
