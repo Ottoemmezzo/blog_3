@@ -57,12 +57,8 @@ export class AddComponent implements OnInit{
       if(c.nome==this.categoria.value) this.selCat=c;
     })
     this.db.add(this.form.value,this.updPath,this.selCat);
-    //this.db.upd(this.id,this.categoria.value,this.form.value);
-    //this.db.add(this.form.value,'',this.selCat);
+
     console.log("Post aggiunto!",this.form.value, ImmagineComponent.indice);
-    ImmagineComponent.indice=0;
-    //this.articoli.subscribe(res=>ImmagineComponent.articoli=res);
-    //this.router.navigate(['/lista']);
 
     this.router.navigate(['/lista']);
 
