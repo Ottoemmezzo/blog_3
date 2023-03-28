@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Articolo } from 'src/app/model/articolo';
@@ -16,7 +17,7 @@ export class UpdArticoloComponent {
   updPath!: string;
   form!: FormGroup;
   categorie!:Categoria[];
-  autori = ['Sebastian', 'Daniele', 'Massimo'];
+  autori! :string;
   titolo = new FormControl("");
   categoria = new FormControl("");
   corpo = new FormControl("");
@@ -25,7 +26,7 @@ export class UpdArticoloComponent {
   id!: string;
   doc!: Articolo;
   cat!:string;
-  constructor(fb: FormBuilder, private db: DbService, private st: FireStorageService, private router: Router, private route: ActivatedRoute) {
+  constructor(private auth:AngularFireAuth,fb: FormBuilder, private db: DbService, private st: FireStorageService, private router: Router, private route: ActivatedRoute) {
     this.categorie=this.db.categorie;
     this.form = fb.group({
       "titolo": this.titolo,
@@ -51,9 +52,17 @@ export class UpdArticoloComponent {
 
     });
     this.db.loadCategorie().subscribe(c=>this.categorie=c);
+    this.auth.authState.subscribe(user=> {
+      console.log("autore:",user?.displayName);
+      this.autori=user?.displayName as string;
+      this.autore.setValue(user?.displayName as string)
+
+    });
 
   }
   onSubmit() {
+
+
     this.db.upd(this.id,<string>this.categoria.value,this.form.value);
 
     //this.articoli.subscribe(res=>ImmagineComponent.articoli=res);

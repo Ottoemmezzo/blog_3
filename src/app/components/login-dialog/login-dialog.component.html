@@ -1,11 +1,13 @@
-<div class="login-dialog">
+<!--<div class="login-dialog">
   <div *ngIf="auth.user | async as user; else showLogin">
     <h1>Hello {{ user.displayName }}!</h1>
     <button (click)="logout()">Logout</button>
-  </div>
+  </div> -->
   <ng-template #showLogin>
-
-      <div class="form-container">
+    <div id="firebaseui-auth-container" ></div>
+    <!--<firebase-ui></firebase-ui>-->
+    <!--
+      <div id="firebaseui-login" class="auth-container">
         <div>
         <mat-label>{{error}}</mat-label>
         </div>
@@ -26,5 +28,6 @@
     <button (click)="loginGoogle()">Login with Google</button>
 
     <button (click)="loginEmail()">Login with Email</button>
+    -->
   </ng-template>
-</div>
+<!--</div>-->

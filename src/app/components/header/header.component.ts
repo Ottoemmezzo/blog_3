@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import firebase from 'firebase/compat/app';
+import { map, Observable } from 'rxjs';
 import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 
@@ -11,9 +13,14 @@ import { RegisterDialogComponent } from '../register-dialog/register-dialog.comp
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit{
+
   user:string="Accedi";
-  constructor(public dialog:MatDialog,public auth: AngularFireAuth){}
+  isLoggedin$!:Observable<Boolean>;
+  isLoggedOut$!:Observable<Boolean>;
+  constructor(public dialog:MatDialog,public auth: AngularFireAuth, private router:Router){}
   ngOnInit(): void {
+    this.isLoggedin$= this.auth.authState.pipe(map(user=>!!user));
+    this.isLoggedOut$=this.isLoggedin$.pipe(map(loggedIn=>!loggedIn));
     this.verifyUser();
     console.log("user loggato:",this.user);
 
@@ -39,13 +46,17 @@ openRegisterDialog(enterAnimationDuration: string, exitAnimationDuration: string
     }).afterClosed().subscribe(()=>{console.log("after dialog closed");//dopo che il dialog si chiude
        this.verifyUser()});
 }
+logout(){
+  this.auth.signOut();
+  this.verifyUser();
+  localStorage.removeItem("username");
+  this.router.navigate([''])
+}
   verifyUser(){
-    let curUser=localStorage.getItem('username') as string;
+   this.auth.authState.subscribe(u=>{
+      if(u!=undefined) this.user=u.displayName as string;
+   });
 
-
-    if(curUser==null) this.user='Accedi';
-    else this.user=curUser;
-    console.log("user:",this.user);
   }
 
 }

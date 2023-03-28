@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { signInWithEmailAndPassword } from '@angular/fire/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -6,6 +6,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 //import * as firebase from 'firebase/compat';
 import firebase from 'firebase/compat/app';
+import * as firebaseui from 'firebaseui';
 import { LoginData } from 'src/app/model/loginData';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -15,7 +16,7 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './login-dialog.component.html',
   styleUrls: ['./login-dialog.component.scss']
 })
-export class LoginDialogComponent {
+export class LoginDialogComponent implements OnInit{
   @Output() loginEvent= new EventEmitter();
   loginData: LoginData={email:"",password:""};
   error="";
@@ -25,6 +26,7 @@ export class LoginDialogComponent {
   at least 1 Capital letter*/
   password= new FormControl('', [Validators.required, Validators.pattern('(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])\S{6,}')]);
   form:FormGroup;
+  ui!:firebaseui.auth.AuthUI;
   constructor(private router:Router,
     public dialogRef: MatDialogRef<LoginDialogComponent>,
     public auth: AngularFireAuth,
@@ -36,7 +38,29 @@ export class LoginDialogComponent {
         "password":this.password
 
       });
+
     }
+    ngOnInit() {
+
+      const uiConfig={
+        signInSuccessUrl:'',
+        signInOptions:[
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            firebase.auth.EmailAuthProvider.PROVIDER_ID
+          ],
+          /*callbacks:{
+            signInSuccessWithAuthResult: this
+            .onLoginSuccesful
+            .bind(this)
+          }*/
+      };
+
+      this.ui=new firebaseui.auth.AuthUI(firebase.auth());
+      console.log();
+
+      this.ui.start('#firebaseui-auth-container',uiConfig);
+    }
+    onLoginSuccesful(){return true;}
  /* login() {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
 

@@ -9,6 +9,7 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ImmagineComponent } from '../immagine/immagine.component';
 import { imgItem } from '../imgItem';
 import { Categoria } from 'src/app/model/categoria';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 
 
@@ -28,18 +29,20 @@ export class AddComponent implements OnInit{
   titolo=new FormControl("");
   categoria=new FormControl("");
   corpo=new FormControl("");
-  autore=new FormControl("");
+  //autore=new FormControl("");
+  autore='';
   urlImg=new FormControl("");
   constructor(fb:FormBuilder,
     private db:DbService,
     private st:FireStorageService,
     private route:ActivatedRoute,
-    private router:Router){
+    private router:Router,
+    private auth:AngularFireAuth){
     this.form=fb.group({
       "titolo":this.titolo,
       "categoria":this.categoria,
       "corpo":this.corpo,
-      "autore":this.autore,
+      //"autore":this.autore,
       "urlImg":this.urlImg
 
     });
@@ -48,6 +51,9 @@ export class AddComponent implements OnInit{
   ngOnInit(): void {
    this.db.loadCategorie().subscribe(c=>this.categorie=c);
     console.log("componente ADD, categorie:",this.categorie);
+   this.auth.authState.subscribe(u=> this.autore=u?.displayName as string);
+
+
 
 
   }
@@ -56,7 +62,7 @@ export class AddComponent implements OnInit{
     this.categorie.forEach(c=>{
       if(c.nome==this.categoria.value) this.selCat=c;
     })
-    this.db.add(this.form.value,this.updPath,this.selCat);
+    this.db.add({...this.form.value,autore:this.autore},this.updPath,this.selCat);
 
     console.log("Post aggiunto!",this.form.value, ImmagineComponent.indice);
 

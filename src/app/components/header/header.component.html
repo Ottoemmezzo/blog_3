@@ -8,14 +8,16 @@
       <!--<button mat-button routerLinkActive="active" color="accent" routerLink="/portfolio">Portfolio</button>-->
     </div>
     <div class="sezAccess">
-      <span>{{user}}</span>
+      <span routerLinkActive="active" routerLink="/user">{{user}}</span>
       <button mat-icon-button [matMenuTriggerFor]="menu"color="primary">
         <mat-icon>account_circle</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
       <button mat-menu-item routerLinkActive="active" routerLink="/add">Nuovo Articolo</button>
-      <button mat-menu-item (click)="openLoginDialog('0ms','0ms')">Login</button>
-      <button mat-menu-item (click)="openRegisterDialog('0ms','0ms')">Register</button>
+      <!--<button mat-menu-item (click)="openLoginDialog('0ms','0ms')">Login</button>-->
+      <button mat-menu-item  *ngIf="isLoggedOut$|async" routerLinkActive="active" routerLink="/login">Login</button>
+      <button mat-menu-item *ngIf="isLoggedOut$|async" (click)="openRegisterDialog('0ms','0ms')">Register</button>
+      <button mat-menu-item *ngIf="isLoggedin$|async"(click)="logout()">Logout</button>
       <!--<button mat-menu-item (click)="login()">Login</button>-->
 </mat-menu>
     </div>

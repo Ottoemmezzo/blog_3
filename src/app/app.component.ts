@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import * as firebase from 'firebase/compat/app';
+//import * as firebase from 'firebase/compat';
 import { Observable } from 'rxjs';
 import { Articolo } from './model/articolo';
 import { Categoria } from './model/categoria';
@@ -63,6 +65,7 @@ export class AppComponent implements OnInit{
 
   }
   ngOnInit(){
+    (<any>window).FIREBASE_APPCHECK_DEBUG_TOKEN = true;
 
 
 }
