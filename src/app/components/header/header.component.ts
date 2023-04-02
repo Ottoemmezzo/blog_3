@@ -58,6 +58,13 @@ logout(){
    });
 
   }
+  loadUserPage(){
+    this.auth.authState.subscribe(u=>{
+      console.log("user:",u?.uid);
+
+      this.router.navigate(['/user',u?.uid]);
+    })
+  }
 
 }
 

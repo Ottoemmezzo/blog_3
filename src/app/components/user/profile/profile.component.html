@@ -1,0 +1,44 @@
+<ng-container *ngIf="afAuth.authState | async as state">
+
+  <div class="profile">
+
+
+
+         <!-- <ng-container *ngIf="state.providerData[0]?.providerId =='google.com';else elseBlock2">
+            {{state.photoURL}}
+            <img [src]="state.photoURL" width="300">
+
+          </ng-container>-->
+
+<!--else app-immagine-->
+
+
+
+            <div>
+              <ng-container *ngIf="state.photoURL==null || state.photoURL!=''">
+                <input  type="file" #inputFile (change)="uploadFile($event,inputFile.value)" >
+              </ng-container>
+
+              <ng-container *ngIf="state.photoURL!=''&& state.photoURL !==null">
+               <app-immagine [imgPath]="state.photoURL"></app-immagine>
+              </ng-container>
+            </div>
+
+
+
+
+
+
+    <div>
+      <h2 *ngIf="state.displayName">{{state.displayName}}</h2>
+      <h2 *ngIf="state.email">{{state.email}}</h2>
+      <h2 *ngIf="state.phoneNumber; else elseblock1">{{state.phoneNumber}}</h2>
+      <ng-template #elseblock1>
+        <input matInput type="text" [(ngModel)]="name">
+      </ng-template>
+
+      <button mat-icon-button (click)="saveProfile()"><mat-icon>save</mat-icon></button>
+    </div>
+
+  </div>
+</ng-container>

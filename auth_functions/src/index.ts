@@ -1,5 +1,5 @@
 import * as functions from "firebase-functions";
-import * as admin from "firebase-admin";
+import * as admin from "firebase-admin"
 
 // // Start writing functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -11,7 +11,7 @@ import * as admin from "firebase-admin";
 
 admin.initializeApp();
 exports.addAdminRole= functions.https.onCall((data, context)=>{
-  return admin.auth().getUserByEmail(data.email).then((user)=>{
+  return admin.auth().getUserByEmail(data.email).then(user=>{
     return admin.auth().setCustomUserClaims(user.uid, {
       admin: true,
 
@@ -24,3 +24,4 @@ exports.addAdminRole= functions.https.onCall((data, context)=>{
     return err;
   });
 });
+

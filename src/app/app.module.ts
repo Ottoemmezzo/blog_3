@@ -36,7 +36,7 @@ import {MatButtonModule} from '@angular/material/button';
 
 
 import { FirebaseAppModule, getApp, initializeApp,provideFirebaseApp } from '@angular/fire/app';
-import { provideAnalytics,getAnalytics,ScreenTrackingService,UserTrackingService } from '@angular/fire/analytics';
+import { provideAnalytics,getAnalytics} from '@angular/fire/analytics';
 import { provideAuth,getAuth, connectAuthEmulator } from '@angular/fire/auth';
 import { provideFirestore,getFirestore, initializeFirestore, connectFirestoreEmulator, Firestore } from '@angular/fire/firestore';
 import { provideFunctions,getFunctions, Functions, connectFunctionsEmulator } from '@angular/fire/functions';
@@ -47,7 +47,7 @@ import {MatMenuModule} from '@angular/material/menu';
 import { AddComponent } from './components/add/add.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, NgModel, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from '@angular/material/input';
 import { DettaglioArticoloComponent } from './components/dettaglio-articolo/dettaglio-articolo.component';
 import {MatGridListModule} from '@angular/material/grid-list';
@@ -66,8 +66,17 @@ import { UserComponent } from './components/user/user.component';
 import {firebase, firebaseui, FirebaseUIModule} from 'firebaseui-angular';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './components/auth.guard';
-import { initializeAppCheck, provideAppCheck, ReCaptchaV3Provider } from '@angular/fire/app-check';
+import { TableArtComponent } from './components/user/table-art/table-art.component';
+//import { initializeAppCheck, provideAppCheck, ReCaptchaV3Provider } from '@angular/fire/app-check';
 //import './components/firebase-initialization';
+import {MatTableModule} from '@angular/material/table';
+import { ProfileComponent } from './components/user/profile/profile.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatTabsModule} from '@angular/material/tabs';
+
+
+
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -109,13 +118,17 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AppRoutingModule,
     MatToolbarModule,
     MatIconModule,
+    MatTableModule,
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTabsModule,
+
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-
-
-    provideAppCheck(() => initializeAppCheck(
+    /*provideAppCheck(() => initializeAppCheck(
       getApp(), {
-      provider: new ReCaptchaV3Provider('6LfzajclAAAAACOMPEeHJd-Vs7_BRjeG0KG6PLVw'),})),
-    provideAnalytics(() => getAnalytics()),
+      provider: new ReCaptchaV3Provider('6LfzajclAAAAACOMPEeHJd-Vs7_BRjeG0KG6PLVw'),})),*/
+   // provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
     /*provideAuth(() => {
       let auth = getAuth()
@@ -173,10 +186,10 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 
 
   ],
-  declarations: [ AppComponent, LandingComponent, ListaArticoliComponent, HeaderComponent, AddComponent, DettaglioArticoloComponent, DelComponent, ImmagineComponent, UpdArticoloComponent, CardArticoloComponent, LoginDialogComponent, RegisterDialogComponent, UserComponent, LoginComponent ],
+  declarations: [ AppComponent, LandingComponent, ListaArticoliComponent, HeaderComponent, AddComponent, DettaglioArticoloComponent, DelComponent, ImmagineComponent, UpdArticoloComponent, CardArticoloComponent, LoginDialogComponent, RegisterDialogComponent, UserComponent, LoginComponent, TableArtComponent, ProfileComponent ],
   bootstrap: [ AppComponent ],
   providers: [
-    ScreenTrackingService,UserTrackingService,
+    //ScreenTrackingService,UserTrackingService,
     {
       provide: BUCKET,
       useValue: environment.firebase.storageBucket,

@@ -8,14 +8,17 @@ import { ListaArticoliComponent} from './components/lista-articoli/lista-articol
 import { LoginComponent } from './components/login/login.component';
 import { UpdArticoloComponent } from './components/upd-articolo/upd-articolo.component';
 import { UserComponent } from './components/user/user.component';
+import { AngularFireAuthGuard, loggedIn, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo, canActivate } from '@angular/fire/compat/auth-guard';
 
+const belongsToAccount = (next:any) => hasCustomClaim(`uid:${next.params.id}`);
 
 const routes: Routes = [{path:'', component:LandingComponent},
 {path:'lista', component:ListaArticoliComponent},
-{path:'add', component:AddComponent},
+{path:'add', component:AddComponent, canActivate:[AngularFireAuthGuard]},
  {path:'articolo', component:DettaglioArticoloComponent},
  {path:'update', component:UpdArticoloComponent},
- {path:'user', component:UserComponent, canActivate:[AuthGuard]},
+ //{path:'user/:id', component:UserComponent, canActivate:[AngularFireAuthGuard], data:{authGuardPipe:belongsToAccount}},
+ {path:'user/:id', component:UserComponent, canActivate:[AngularFireAuthGuard]},
  {path:'login', component:LoginComponent}];
 
 @NgModule({

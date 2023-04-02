@@ -8,11 +8,20 @@ import { Articolo } from 'src/app/model/articolo';
 import { Categoria } from 'src/app/model/categoria';
 import { DbService, Lista } from 'src/app/services/db.service';
 import { ArticoliService } from '../articoli.service';
+import {animate, state, style, transition, trigger} from '@angular/animations';
+
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  styleUrls: ['./user.component.scss'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({height: '0px', minHeight: '0'})),
+      state('expanded', style({height: '*'})),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class UserComponent implements OnInit {
   static index = 0;
@@ -62,9 +71,12 @@ export class UserComponent implements OnInit {
     return this.db.loadArticoliBy(cat.nome);
   }
   ngOnInit() {
-    this.db.loadCategorie().subscribe(c => this.categorie = c)
-    this.db.getArt().subscribe(r => this.articoli = r);
-    this.auth.authState.subscribe(user=> this.autore=user?.displayName as string )
+    //this.db.loadCategorie().subscribe(c => this.categorie = c)
+    this.articoli$=this.db.getArt();//.subscribe(r => {this.articoli = r; console.log("Inpu-main:",this.articoli);});
+
+    //console.log("Inpu-main:",this.articoli);
+
+    //this.auth.authState.subscribe(user=> this.autore=user?.displayName as string )
 
 
   }

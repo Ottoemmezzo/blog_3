@@ -24,6 +24,7 @@ export class ListaArticoliComponent implements OnInit {
   categorie$!: Observable<any[]>;
   categorie: Categoria[]=[];
   articoli: Articolo[] = [];
+  autore:string='';
   profileUrl!: Observable<string>;
   id!: string;
   l: string = 'card';
@@ -67,6 +68,7 @@ export class ListaArticoliComponent implements OnInit {
  {
   this.db.loadCategorie().subscribe(c=>this.categorie=c)
   this.db.getArt().subscribe(r=>this.articoli=r);
+
 
 }
 /*ngAfterViewChecked(){

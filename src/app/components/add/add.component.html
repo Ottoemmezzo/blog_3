@@ -32,6 +32,13 @@
               </mat-select>
              <mat-error *ngIf="categoria.hasError('required')">Ctegoria obbligatoria. Sceglierne una.</mat-error>
         </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a date</mat-label>
+          <input matInput formControlName="picker"[matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
       </div>
       <div>
         <label>Url Immagine</label>

@@ -29,7 +29,7 @@ tr.example-element-row:not(.example-expanded-row):active {
   padding: 8px;
   font-weight: lighter;
   margin: 8px 0;
-  height: 104px;
+  height: 140px;
 }
 
 .example-element-symbol {
@@ -44,41 +44,4 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-description-attribution {
   opacity: 0.5;
-}
-.head-lights{
-  width:80%;
-  height:30vh;
-}
-.list-group {
-  width: 80%;
-  //background-color: cadetblue;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content:center;
-  .group-container {
-    margin: 20px;
-    background-color: rgb(132, 127, 127);
-    color: white;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:flex-start;
-    h2 {
-      text-align: center;
-      width: 100%;
-      background-color: crimson;
-      font-size: 2em;
-
-    }
-        app-card-articolo {
-          margin: 20px;
-        }
-        .paginator {
-          width: 100%;
-          display: flex;
-          justify-content: center;
-        }
-
-  }
 }

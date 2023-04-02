@@ -4,5 +4,8 @@ export interface Articolo {
   imgUrl:string,
   corpo:string,
   autore:string,
-  categoria:string
+  categoria:string,
+  dataCreazione:string,
+  idAutore:string,
+  pubblicato:boolean
 }

@@ -20,7 +20,7 @@ export class CardArticoloComponent {
   updateArticolo(){
     console.log("Deleting...:",this.data.id,this.cat);
 
-    this.router.navigateByUrl(`/update?id=${this.data.id}&cat=${this.cat}`);
+    this.router.navigateByUrl(`/update?id=${this.data.id}&cat=${this.cat}&aut${this.data.autore}`);
 
 
   }

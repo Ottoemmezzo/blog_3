@@ -1,6 +1,10 @@
 <app-header></app-header>
+<app-profile></app-profile>
+<ng-container *ngIf="articoli$ | async as art" >
+<app-table-art [dataInput]="art"></app-table-art>
 
-<div class="list-group">
+</ng-container>
+<!--<div class="list-group">
   <div class="group-container" *ngFor="let cat of categorie">
     <h2>{{cat.nome}}</h2>
     <ng-container *ngFor="let art of articoli">
@@ -14,4 +18,4 @@
   </div>
 
 </div>
-
+-->

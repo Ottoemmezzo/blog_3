@@ -10,6 +10,10 @@ import { ImmagineComponent } from '../immagine/immagine.component';
 import { imgItem } from '../imgItem';
 import { Categoria } from 'src/app/model/categoria';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Articolo } from 'src/app/model/articolo';
+import * as firebase from 'firebase/compat';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Timestamp } from '@firebase/firestore-types';
 
 
 
@@ -29,20 +33,22 @@ export class AddComponent implements OnInit{
   titolo=new FormControl("");
   categoria=new FormControl("");
   corpo=new FormControl("");
-  //autore=new FormControl("");
+  dataCreazione=new FormControl(new Date());
   autore='';
+  uid='';
   urlImg=new FormControl("");
   constructor(fb:FormBuilder,
     private db:DbService,
     private st:FireStorageService,
     private route:ActivatedRoute,
     private router:Router,
-    private auth:AngularFireAuth){
+    private auth:AngularFireAuth,
+    private aFs:AngularFirestore){
     this.form=fb.group({
       "titolo":this.titolo,
       "categoria":this.categoria,
       "corpo":this.corpo,
-      //"autore":this.autore,
+      "picker":this.dataCreazione,
       "urlImg":this.urlImg
 
     });
@@ -51,7 +57,7 @@ export class AddComponent implements OnInit{
   ngOnInit(): void {
    this.db.loadCategorie().subscribe(c=>this.categorie=c);
     console.log("componente ADD, categorie:",this.categorie);
-   this.auth.authState.subscribe(u=> this.autore=u?.displayName as string);
+   this.auth.authState.subscribe(u=> {this.uid=u?.uid as string; this.autore=u?.displayName as string});
 
 
 
@@ -62,9 +68,21 @@ export class AddComponent implements OnInit{
     this.categorie.forEach(c=>{
       if(c.nome==this.categoria.value) this.selCat=c;
     })
-    this.db.add({...this.form.value,autore:this.autore},this.updPath,this.selCat);
+    let art:Articolo={
+      autore:this.autore,
+      categoria:this.categoria.value as string,
+      corpo:this.corpo.value as string,
+      imgUrl:this.updPath,
+      dataCreazione:this.dataCreazione.value?.toDateString() as string,
+      titolo:this.titolo.value as string,
+      id:'',
+      idAutore:this.uid,
+      pubblicato:false
+    }
+    this.db.add(art,this.updPath,this.selCat);
+    //this.db.add({...this.form.value,autore:this.autore},this.updPath,this.selCat);
 
-    console.log("Post aggiunto!",this.form.value, ImmagineComponent.indice);
+    console.log("Post aggiunto!",this.form.value);
 
     this.router.navigate(['/lista']);
 

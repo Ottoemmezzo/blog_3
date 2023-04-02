@@ -5,8 +5,11 @@
 <div class="list-group">
   <div class="group-container" *ngFor="let cat of categorie">
     <h2>{{cat.nome}}</h2>
+
     <ng-container *ngFor="let art of articoli">
-      <app-card-articolo *ngIf="art.categoria==cat.nome" [cat]="cat.nome" [data]="art"></app-card-articolo>
+      <ng-container *ngIf="art.pubblicato">
+          <app-card-articolo *ngIf="art.categoria==cat.nome" [cat]="cat.nome" [data]="art"></app-card-articolo>
+      </ng-container>
     </ng-container>
     <mat-paginator #paginator class="paginator" (page)="handlePageEvent($event)" [length]="length"
       [pageSize]="pageSize" [disabled]="disabled" [showFirstLastButtons]="showFirstLastButtons"

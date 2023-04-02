@@ -2,7 +2,8 @@
   <mat-card-header>
     <div mat-card-avatar class="header-image"></div>
     <mat-card-title>{{data.titolo}}</mat-card-title>
-    <mat-card-subtitle>{{data.autore}}</mat-card-subtitle>
+    <mat-card-subtitle>{{data.autore}}\{{data.dataCreazione | date: 'yyyy-MM-dd'}}</mat-card-subtitle>
+    <!--<mat-card-subtitle>{{data.dataCreazione}}</mat-card-subtitle>-->
   </mat-card-header>
   <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
   <app-immagine [l]="300" [imgPath]="data.imgUrl"></app-immagine>

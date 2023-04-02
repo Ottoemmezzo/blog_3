@@ -1,0 +1,124 @@
+<mat-tab-group>
+  <mat-tab label={{autore}}>
+
+
+
+    <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+      <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+        <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+        <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+      </ng-container>
+      <ng-container matColumnDef="expand">
+        <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button aria-label="expand row"
+            (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+            <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+          <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+            <div class="example-element-diagram">
+              <div class="example-element-position"> {{element.titolo}}
+
+              </div>
+              <div class="example-element-symbol"> <app-immagine [imgPath]="element.imgUrl" [l]="100" [h]="60">
+                </app-immagine> </div>
+              <div class="example-element-name">
+                <button mat-icon-button color="warn"
+                  (click)="deleteArticolo(element.id,element.categoria)"><mat-icon>delete</mat-icon></button>
+                <button mat-icon-button color="primary"
+                  (click)="updateArticolo(element.id,element.categoria)"><mat-icon>edit_square</mat-icon></button>
+                <button mat-icon-button color="accent"
+                  (click)="mostraArticolo(element.id)"><mat-icon>read_more</mat-icon></button>
+
+              </div>
+              <!--<div class="example-element-weight"> {{element.corpo}} </div>-->{{element.dataCreazione}}
+            </div>
+            <div class="example-element-description">
+              {{element.corpo}}
+              <span class="example-element-description-attribution"> -- {{element.autore}} </span>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+      <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;" class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element">
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+    </table>
+  </mat-tab>
+  <!-------------SECONDA TAB ADMIN------------------------------------------------------------------>
+  <ng-container *ngIf="uname=='uDB8GRHxIlZUa4vbTTM28YH2xuo2'">
+  <mat-tab label="Tutti gli autori">
+    <table mat-table [dataSource]="dataInput" multiTemplateDataRows class="mat-elevation-z8">
+      <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+        <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+        <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+      </ng-container>
+      <ng-container matColumnDef="expand">
+        <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button aria-label="expand row"
+            (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+            <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+            <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+          <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+            <div class="example-element-diagram">
+              <div class="example-element-position"> {{element.titolo}}
+
+              </div>
+              <div class="example-element-symbol"> <app-immagine [imgPath]="element.imgUrl" [l]="100" [h]="60">
+                </app-immagine> </div>
+              <div class="example-element-name">
+                <button mat-icon-button color="warn"
+                  (click)="deleteArticolo(element.id,element.categoria)"><mat-icon>delete</mat-icon></button>
+                <button mat-icon-button color="primary"
+                  (click)="updateArticolo(element.id,element.categoria)"><mat-icon>edit_square</mat-icon></button>
+                <button mat-icon-button color="accent"
+                  (click)="mostraArticolo(element.id)"><mat-icon>read_more</mat-icon></button>
+                  <button mat-icon-button (click)="pubblicaArticolo(element)">
+
+                    <mat-icon *ngIf="element.pubblicato;else elseblock" color="warn">stars</mat-icon>
+
+                    <ng-template #elseblock>
+                      <mat-icon color="accent">stars</mat-icon>
+                    </ng-template>
+                  </button>
+              </div>
+              <!--<div class="example-element-weight"> {{element.corpo}} </div>-->{{element.dataCreazione}}
+            </div>
+            <div class="example-element-description">
+              {{element.corpo}}
+              <span class="example-element-description-attribution"> -- {{element.autore}} </span>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+      <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;" class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="expandedElement = expandedElement === element ? null : element">
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+    </table>
+
+  </mat-tab>
+</ng-container>
+</mat-tab-group>
