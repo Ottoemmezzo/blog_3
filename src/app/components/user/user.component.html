@@ -1,9 +1,11 @@
 <app-header></app-header>
 <app-profile></app-profile>
-<ng-container *ngIf="articoli$ | async as art" >
-<app-table-art [dataInput]="art"></app-table-art>
+<!--<ng-container *ngIf="articoli$ | async as art" >-->
+<ng-container *ngIf="articoli$ | async as  art">
 
+  <app-table-art *ngIf="pubblicati$|async as pub" [bozze]="art" [pubblicati]="pub" [uid]="uid"></app-table-art>
 </ng-container>
+<!--</ng-container>-->
 <!--<div class="list-group">
   <div class="group-container" *ngFor="let cat of categorie">
     <h2>{{cat.nome}}</h2>

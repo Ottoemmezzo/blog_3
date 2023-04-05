@@ -3,7 +3,7 @@
 
 
 
-    <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+    <table mat-table [dataSource]="userArts" multiTemplateDataRows class="mat-elevation-z8">
       <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
         <th mat-header-cell *matHeaderCellDef> {{column}} </th>
         <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
@@ -25,6 +25,20 @@
           <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
             <div class="example-element-diagram">
               <div class="example-element-position"> {{element.titolo}}
+                <mat-label>Visibilità</mat-label>
+            <mat-select [formControl]="pos" required>
+              <mat-option>--</mat-option>
+              <mat-option value="h1">
+                 h1
+              </mat-option>
+              <mat-option value="h2">
+                h2
+             </mat-option>
+             <mat-option value="h3">
+              h3
+             </mat-option>
+
+              </mat-select>
 
               </div>
               <div class="example-element-symbol"> <app-immagine [imgPath]="element.imgUrl" [l]="100" [h]="60">
@@ -36,8 +50,15 @@
                   (click)="updateArticolo(element.id,element.categoria)"><mat-icon>edit_square</mat-icon></button>
                 <button mat-icon-button color="accent"
                   (click)="mostraArticolo(element.id)"><mat-icon>read_more</mat-icon></button>
+                <button mat-icon-button (click)="pubblicaArticolo(element)">
 
-              </div>
+                    <mat-icon *ngIf="element.pubblicato;else elseblock" color="warn">stars</mat-icon>
+
+                    <ng-template #elseblock>
+                      <mat-icon color="accent">stars</mat-icon>
+                    </ng-template>
+                  </button>
+                </div>
               <!--<div class="example-element-weight"> {{element.corpo}} </div>-->{{element.dataCreazione}}
             </div>
             <div class="example-element-description">
@@ -57,9 +78,9 @@
     </table>
   </mat-tab>
   <!-------------SECONDA TAB ADMIN------------------------------------------------------------------>
-  <ng-container *ngIf="uname=='uDB8GRHxIlZUa4vbTTM28YH2xuo2'">
-  <mat-tab label="Tutti gli autori">
-    <table mat-table [dataSource]="dataInput" multiTemplateDataRows class="mat-elevation-z8">
+  <ng-container *ngIf="admin">
+  <mat-tab label="Pubblicati">
+    <table mat-table [dataSource]="pubblicati" multiTemplateDataRows class="mat-elevation-z8">
       <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
         <th mat-header-cell *matHeaderCellDef> {{column}} </th>
         <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
@@ -80,7 +101,9 @@
         <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
           <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
             <div class="example-element-diagram">
-              <div class="example-element-position"> {{element.titolo}}
+              <div class="example-element-position">
+                {{element.titolo}} Tipo:{{element.pos}}
+
 
               </div>
               <div class="example-element-symbol"> <app-immagine [imgPath]="element.imgUrl" [l]="100" [h]="60">
@@ -93,12 +116,12 @@
                 <button mat-icon-button color="accent"
                   (click)="mostraArticolo(element.id)"><mat-icon>read_more</mat-icon></button>
                   <button mat-icon-button (click)="pubblicaArticolo(element)">
-
-                    <mat-icon *ngIf="element.pubblicato;else elseblock" color="warn">stars</mat-icon>
+                    <mat-icon id="stella">star</mat-icon>
+                  <!-- <mat-icon *ngIf="element.pubblicato; else elseblock" color="warn" #stella>stars</mat-icon>
 
                     <ng-template #elseblock>
                       <mat-icon color="accent">stars</mat-icon>
-                    </ng-template>
+                    </ng-template>-->
                   </button>
               </div>
               <!--<div class="example-element-weight"> {{element.corpo}} </div>-->{{element.dataCreazione}}

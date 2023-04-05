@@ -32,7 +32,7 @@ export class DettaglioArticoloComponent implements OnInit{
   ngOnInit() {
       this.route.queryParams.subscribe(params => {
       this.id = params['id'];
-      this.db.getArt().subscribe(res=>{
+      this.db.getArt('articoli').subscribe(res=>{
         res.forEach(data=>{
           if(data.id==this.id)this.doc=data;
 

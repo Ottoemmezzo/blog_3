@@ -34,6 +34,7 @@ export class AddComponent implements OnInit{
   categoria=new FormControl("");
   corpo=new FormControl("");
   dataCreazione=new FormControl(new Date());
+  visibilita=new FormControl("");
   autore='';
   uid='';
   urlImg=new FormControl("");
@@ -44,12 +45,14 @@ export class AddComponent implements OnInit{
     private router:Router,
     private auth:AngularFireAuth,
     private aFs:AngularFirestore){
+
     this.form=fb.group({
       "titolo":this.titolo,
       "categoria":this.categoria,
       "corpo":this.corpo,
       "picker":this.dataCreazione,
-      "urlImg":this.urlImg
+      "urlImg":this.urlImg,
+      "visibilita":this.visibilita
 
     });
 
@@ -77,9 +80,10 @@ export class AddComponent implements OnInit{
       titolo:this.titolo.value as string,
       id:'',
       idAutore:this.uid,
-      pubblicato:false
+      pubblicato:false,
+      pos:this.visibilita.value as string
     }
-    this.db.add(art,this.updPath,this.selCat);
+    this.db.add(art,this.updPath,'articoli');
     //this.db.add({...this.form.value,autore:this.autore},this.updPath,this.selCat);
 
     console.log("Post aggiunto!",this.form.value);

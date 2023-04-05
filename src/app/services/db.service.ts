@@ -84,22 +84,22 @@ export class DbService {
     return this.firestore.collection(nome).valueChanges();
   }
 
-  add(articolo: Articolo, path: string, cat: Categoria) {
+  add(articolo: Articolo, imgPath: string, path: string) {
     console.log('questo è il dato', articolo);
-    articolo.imgUrl = path;
-    this.firestore.collection(`articoli`).doc().set(articolo);
+    if(imgPath!='')articolo.imgUrl = imgPath;
+    this.firestore.collection(path).doc().set(articolo);
     //this.firestore.collection('articoli').doc().set(articolo);
 
   }
-  getArt() {
-    return this.firestore.collection('articoli').valueChanges({ idField: 'id' }) as Observable<Articolo[]>;
+  getArt(path:string) {
+    return this.firestore.collection(path).valueChanges({ idField: 'id' }) as Observable<Articolo[]>;
     /*console.log('questo è fatto...');
 
     collection.subscribe(res=>console.log('res',res));
     */
   }
-  del(id: string, cat: string) {
-    this.firestore.collection(`articoli`).doc(id).delete();
+  del(id: string, path: string) {
+    this.firestore.collection(path).doc(id).delete();
 
 
   }
@@ -110,8 +110,8 @@ export class DbService {
     //return this.firestore.doc(`/categorie/${cat}/articoli/${id}`).valueChanges();
     //return this.firestore.doc('/categorie/0vIibM2ptDfN6Vip6v5j/articoli/ucYGfvdrI4EvT9iqZU1r').valueChanges();
   }
-  upd(id: string, cat: string, newArt: Articolo) {
-    this.firestore.collection(`articoli`).doc(id).update(newArt);
+  upd(id: string, path: string, newArt: Articolo) {
+    this.firestore.collection(path).doc(id).update(newArt);
 
 
   }

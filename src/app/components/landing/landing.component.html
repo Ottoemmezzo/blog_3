@@ -1,1 +1,42 @@
 <app-header></app-header>
+
+
+<div class="container">
+  <div class="headlights">
+    <div >
+      <app-immagine [h]="300" [l]="450" [imgPath]="head1.imgUrl"></app-immagine>
+    </div>
+    <div class="head1">
+      <h2>{{head1.titolo}}</h2>
+      <h3>{{head1.corpo}}</h3>
+    </div>
+    <div>
+
+      <div class="head2">
+          <div >
+            <app-immagine [h]="145" [l]="217" [imgPath]="head2.imgUrl"></app-immagine>
+          </div>
+          <div class="corpo">
+            <h2>{{head2.titolo}}</h2>
+            <!--<h3>{{head2.corpo}}</h3>-->
+          </div>
+      </div>
+
+      <div class="head3">
+        <div>
+          <app-immagine [h]="145" [l]="217" [imgPath]="head3.imgUrl"></app-immagine>
+        </div>
+        <div class="corpo">
+          <h2>{{head3.titolo}}</h2>
+          <!-- <h3>{{head3.corpo}}</h3>-->
+        </div>
+    </div>
+
+
+
+  </div>
+
+</div>
+
+
+

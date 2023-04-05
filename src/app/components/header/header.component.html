@@ -1,26 +1,30 @@
-<mat-toolbar  color="warn">
+<mat-toolbar color="accent">
   <div (loginEvent)="verifyUser()" class="barraApp">
-    <div class="sezLogo">
+    <!--<div class="sezLogo">
       <span routerLinkActive="active" routerLink="">Sebastian Lazzeri</span>
-    </div>
+    </div>-->
     <div class="sezButtons">
-      <button mat-button routerLinkActive="active" color="accent" routerLink="/lista">Blog</button>
+      <button mat-button routerLinkActive="active" color="accent" routerLink=""><p><span>&lcub;</span>Prima Pagina<span>&rcub;</span></p></button>
+      <button mat-button routerLinkActive="active" color="accent" routerLink="/lista"><p><span>&lcub;</span>Blog<span>&rcub;</span></p></button>
       <!--<button mat-button routerLinkActive="active" color="accent" routerLink="/portfolio">Portfolio</button>-->
     </div>
     <div class="sezAccess">
       <button mat-button (click)="loadUserPage()">{{user}}</button>
-      <button mat-icon-button [matMenuTriggerFor]="menu"color="primary">
+      <button mat-icon-button [matMenuTriggerFor]="menu" color="primary">
         <mat-icon>account_circle</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-      <button mat-menu-item *ngIf="isLoggedin$|async" routerLinkActive="active" routerLink="/add">Nuovo Articolo</button>
-      <!--<button mat-menu-item (click)="openLoginDialog('0ms','0ms')">Login</button>-->
-      <button mat-menu-item  *ngIf="isLoggedOut$|async" routerLinkActive="active" routerLink="/login">Login</button>
-      <button mat-menu-item *ngIf="isLoggedOut$|async" (click)="openRegisterDialog('0ms','0ms')">Register</button>
-      <button mat-menu-item *ngIf="isLoggedin$|async"(click)="logout()">Logout</button>
-      <!--<button mat-menu-item (click)="login()">Login</button>-->
-</mat-menu>
+        <button mat-menu-item *ngIf="isLoggedin$|async" routerLinkActive="active" routerLink="/add">Nuovo
+          Articolo</button>
+        <!--<button mat-menu-item (click)="openLoginDialog('0ms','0ms')">Login</button>-->
+        <button mat-menu-item *ngIf="isLoggedOut$|async" routerLinkActive="active" routerLink="/login">Login</button>
+        <button mat-menu-item *ngIf="isLoggedOut$|async" (click)="openRegisterDialog('0ms','0ms')">Register</button>
+        <button mat-menu-item *ngIf="isLoggedin$|async" (click)="logout()">Logout</button>
+        <!--<button mat-menu-item (click)="login()">Login</button>-->
+      </mat-menu>
     </div>
   </div>
 </mat-toolbar>
-
+<div class="intestazione">
+   <h1><span class="il">IL</span><span class="bracket">&lcub;</span> <span class="klan">Klan</span><span class="bracket">&rcub;</span><span class="destino">dest:no</span></h1>
+</div>

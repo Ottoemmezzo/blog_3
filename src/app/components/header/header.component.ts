@@ -48,9 +48,9 @@ openRegisterDialog(enterAnimationDuration: string, exitAnimationDuration: string
 }
 logout(){
   this.auth.signOut();
-  this.verifyUser();
-  localStorage.removeItem("username");
-  this.router.navigate([''])
+  this.user="accedi";
+
+
 }
   verifyUser(){
    this.auth.authState.subscribe(u=>{

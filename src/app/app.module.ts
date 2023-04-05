@@ -74,6 +74,10 @@ import { ProfileComponent } from './components/user/profile/profile.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+
+
 
 
 
@@ -123,6 +127,9 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
+    MatDividerModule,
+    MatListModule,
+
 
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     /*provideAppCheck(() => initializeAppCheck(

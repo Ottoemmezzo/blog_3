@@ -26,10 +26,12 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 export class UserComponent implements OnInit {
   static index = 0;
   isLoaded = false;
-  articoli$!: Observable<any[]>;
+  articoli$!: Observable<Articolo[]>;
+  pubblicati$!: Observable<Articolo[]>;
   categorie$!: Observable<any[]>;
   categorie: Categoria[] = [];
   articoli: Articolo[] = [];
+  bozze: Articolo[] = [];
   profileUrl!: Observable<string>;
   id!: string;
   l: string = 'card';
@@ -48,6 +50,7 @@ export class UserComponent implements OnInit {
 
   pageEvent!: PageEvent;
   autore = "";
+  uid:string='';
 
 
 
@@ -72,8 +75,9 @@ export class UserComponent implements OnInit {
   }
   ngOnInit() {
     //this.db.loadCategorie().subscribe(c => this.categorie = c)
-    this.articoli$=this.db.getArt();//.subscribe(r => {this.articoli = r; console.log("Inpu-main:",this.articoli);});
-
+    this.auth.authState.subscribe(u=>this.uid=u?.uid as string);
+    this.articoli$=this.db.getArt('articoli');//.subscribe(r => {this.articoli = r; console.log("Inpu-main:",this.articoli);});
+    this.pubblicati$=this.db.getArt('pubblicati');
     //console.log("Inpu-main:",this.articoli);
 
     //this.auth.authState.subscribe(user=> this.autore=user?.displayName as string )

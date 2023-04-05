@@ -7,5 +7,6 @@ export interface Articolo {
   categoria:string,
   dataCreazione:string,
   idAutore:string,
-  pubblicato:boolean
+  pubblicato:boolean,
+  pos:string
 }

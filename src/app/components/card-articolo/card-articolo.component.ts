@@ -15,7 +15,7 @@ export class CardArticoloComponent {
   deleteArticolo(){
     console.log("Deleting...:",this.data.id,this.cat);
 
-    this.db.del(this.data.id,this.cat);
+    this.db.del(this.data.id,'articoli');
   }
   updateArticolo(){
     console.log("Deleting...:",this.data.id,this.cat);
