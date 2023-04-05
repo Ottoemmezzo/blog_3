@@ -1,35 +1,97 @@
+button {
+  font-size: 1.3em;
+}
 
-.barraApp{
-  width:100%;
+.barraApp {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  .sezLogo{
 
+  .sezButtons {
+    display: flex;
+    //background-color: aliceblue;
+    justify-content: space-between;
+    align-items: center;
+    height:2em;
+    button{
+      height: 100%;
+      display: flex;
+      align-items: flex-start;
+      font-size:1.8em;
+      color: white;
+      span {
+
+        color: red;
+        font-size: 1.5em;
+      }
+
+    }
+  }
+  .sezLogo {
     height: 100%;
     display: flex;
     align-items: center;
 
-
     span {
-
       font-size: 3em;
-
     }
   }
-  .sezAccess{
+  .sezAccess {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-items: center;
     overflow: clip;
     width: 500px;
-    button{
 
-      mat-icon{
+    button {
+      mat-icon {
         color: white;
-
       }
     }
   }
+}
+////////INTESTAZIONE:TITOLO E LOGO
+.intestazione{
 
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+ // background-color: aquamarine;
+  height:15vh;
+  h1{
+    box-sizing: border-box;
+    height:15vh;
+    //background-color: blueviolet;
+    padding:1.8%;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    span{
+      height:8vh;
+      display:flex;
+      align-items: center;
+      border-radius: 10px;
+
+    }
+    .bracket{
+      color:white;
+    }
+    .il{
+      background-color: white;
+      font-size: 6rem;
+    }
+    .klan{
+      background-color: red;
+      color: white;
+    }
+    .destino{
+      background-color: #120460;
+      color: red;
+
+    }
+  }
 }
