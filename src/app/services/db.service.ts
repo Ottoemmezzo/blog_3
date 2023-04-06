@@ -104,9 +104,9 @@ export class DbService {
 
   }
   get(id: string) {
-    let path = `/articoli/${id}`;
+    let path = 'pubblicati/'+id;
     console.log('SErvice doc-path:', path);
-    return this.firestore.doc(path).valueChanges();
+    return this.firestore.doc<Articolo>(path).valueChanges();
     //return this.firestore.doc(`/categorie/${cat}/articoli/${id}`).valueChanges();
     //return this.firestore.doc('/categorie/0vIibM2ptDfN6Vip6v5j/articoli/ucYGfvdrI4EvT9iqZU1r').valueChanges();
   }

@@ -1,45 +1,83 @@
 .container{
-  width:90%;
+  width:1200px;
   margin: 0 auto;
   display:flex;
   .headlights{
     margin: 5% auto;
-    width:80%;
+    width:1000px;
+    height:800px;
     display:flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: center;
+    justify-content:center;
+    .categoria{
+      margin: 0 auto;
+      background-color:red;
+      width:80%;
+      //height:1.5em;
+      font-size: 3em;
+      text-transform: capitalize;
+      text-align: center;
+    }
+
+
     border-top:5px dotted white;
-    padding: 10px;
+    //padding: 5px;
+
     .head1{
       box-sizing: border-box;
       display: flex;
-      flex-wrap: nowrap;
-      flex-direction: column;
-      margin-left: 5px;
-      width:30%;
-      //background-color: aliceblue;
-      background-image: linear-gradient(to right, #120460, #cccfd2);
-      padding:5px;
-      height:300px;
-      border-radius: 5px;
-      border-left:5px solid red;
-      h2{
-        color:red;
-        font-size:3em;
+      width:800px;
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      background-image: url('../../../assets/img/sfondo_bracket_L.png');
+      /*div{
+        width:350px;
+        margin-left: 5px;
+      }*/
+      .corpoHead{
+        box-sizing: border-box;
+        width:390px;
+        margin-left: 5px;
+        background-image: linear-gradient(to bottom, #120460, #cccfd2);
+        padding:5px;
+        height:300px;
+        border-radius: 5px;
+        border-top:5px solid red;
+
+        h2{
+          color:red;
+          font-size:3em;
+        }
+        h3{
+          color:white;
+          font-size:1.5em;
+
+        }
       }
-      h3{
-        color:white;
-        font-size:1.5em;
+
+      //background-color: aliceblue;
+
+    }
+    .spalla{
+      display: flex;
+      flex-wrap: wrap;
+      width: 400px;
+      height:350px;
+      box-sizing: border-box;
+      align-items: center;
+      img{
+        width:25px;
 
       }
-    }
     .head2{
 
       display: flex;
       flex-wrap: nowrap;
       //flex-direction: column;
       margin-left: 5px;
-      width:50%;
+      width:390px;
       //margin-top: 5px;
       height:145px;
       //background-image: linear-gradient(to right, aliceblue, #cccfd2);
@@ -48,15 +86,18 @@
         padding:5px;
         border-radius: 5px;
         margin-left: 5px;
-        width:217px;
+        width:170px;
+
         height:145px;
-        background-image: linear-gradient(to right, #120460, #cccfd2);
-        border-left:5px solid red;
+        background-image: linear-gradient(to bottom, white, #cccfd2);
+        border-top:5px solid red;
         h2{
-          width:217px;
+          //width:217px;
+          width:170px;
+
           margin-left: 10px;
-          color:red;
-          font-size:3em;
+          color:#120460;
+          font-size:2em;
         }
         h3{
           color:white;
@@ -72,27 +113,29 @@
       flex-wrap: nowrap;
       //flex-direction: column;
       margin-left: 5px;
-      width:50%;
+      width:390px;
       //margin-top: 5px;
       height:145px;
       //background-image: linear-gradient(to right, #120460, #cccfd2);
-      margin-top:10px;
+      margin-top:5px;
       .corpo{
         box-sizing: border-box;
         padding:5px;
         border-radius: 5px;
-        margin-left: 5px;
-        width:217px;
+        margin-right: 5px;
+        width:170px;
+        //width:45%;
+
         height:145px;
-        background-image: linear-gradient(to right, #120460, #cccfd2);
-        border-left:5px solid red;
+        background-image: linear-gradient(to bottom, white, #cccfd2);
+        border-top:5px solid red;
 
         h2{
 
-          width:217px;
+          width:170px;
           margin-left: 10px;
-          color:red;
-          font-size:3em;
+          color:#120460;
+          font-size:2em;
         }
         h3{
           color:white;
@@ -100,9 +143,10 @@
 
         }
       }
-
+    }
 
     }
+  }
     /*.head3{
       display: flex;
       flex-wrap: nowrap;
@@ -133,4 +177,4 @@
 
 
   }
-}
+

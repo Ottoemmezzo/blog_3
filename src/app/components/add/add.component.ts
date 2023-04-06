@@ -35,6 +35,7 @@ export class AddComponent implements OnInit{
   corpo=new FormControl("");
   dataCreazione=new FormControl(new Date());
   visibilita=new FormControl("");
+  descrizione=new FormControl("");
   autore='';
   uid='';
   urlImg=new FormControl("");
@@ -52,7 +53,8 @@ export class AddComponent implements OnInit{
       "corpo":this.corpo,
       "picker":this.dataCreazione,
       "urlImg":this.urlImg,
-      "visibilita":this.visibilita
+      "visibilita":this.visibilita,
+      "descrizione":this.descrizione
 
     });
 
@@ -81,7 +83,8 @@ export class AddComponent implements OnInit{
       id:'',
       idAutore:this.uid,
       pubblicato:false,
-      pos:this.visibilita.value as string
+      pos:this.visibilita.value as string,
+      descrizione:this.descrizione.value as string
     }
     this.db.add(art,this.updPath,'articoli');
     //this.db.add({...this.form.value,autore:this.autore},this.updPath,this.selCat);

@@ -1,0 +1,46 @@
+#container{
+  margin: 0 auto;
+  #headline{
+    margin: 0 auto;
+    display:flex;
+    padding-left:40px;
+    padding-top: 30px;
+    #bodyHead{
+      padding:20px;
+      #bhTitolo{
+        font-size:2.5rem;
+        color: #120460;
+        sup{
+          color:gray;
+          font-size: 0.8rem;
+        }
+      }
+      #bhDescrizione{
+        font-size:1.5rem;
+        font-style: italic;
+      }
+      #bhCorpo{
+        font-size:1rem;
+      }
+
+    }
+  }
+  #mosaico{
+    //padding-left:40px;
+    padding-top:20px;
+    display:flex;
+    flex-wrap: wrap;
+    //align-items: center;
+    justify-content:center;
+    app-card-articolo{
+      margin-left: 10px;
+
+    }
+    #paginatore{
+      width:1100px;
+      text-align: center;
+    }
+
+  }
+
+}

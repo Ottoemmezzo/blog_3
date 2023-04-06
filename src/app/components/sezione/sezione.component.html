@@ -1,0 +1,21 @@
+<div id="container">
+  <div id="headline">
+    <app-immagine [l]="420" [h]="330" [imgPath]="head1.imgUrl"></app-immagine>
+    <div id="bodyHead">
+      <h2 id="bhTitolo">{{head1.titolo}}<sup>&nbsp;--by-{{head1.autore}}-&nbsp;il&nbsp;{{head1.dataCreazione}}</sup>
+      </h2>
+      <h3 id="bhDescrizione">{{head1.descrizione}}</h3>
+      <p>{{head1.corpo}}</p>
+    </div>
+  </div>
+  <div id="mosaico">
+    <!--<h1>aaa</h1>-->
+
+    <app-card-articolo *ngFor="let data of pagina" [data]="data" cat="h3"></app-card-articolo>
+    <div id="paginatore">
+      <h3>Pagina:{{curPage}}-di-{{totalPage}}&nbsp;&nbsp;&nbsp;<button mat-mini-fab (click)="pageDown()"><mat-icon >arrow_back</mat-icon></button>&nbsp;&nbsp;<button mat-mini-fab (click)="pageUp()"><mat-icon >arrow_forward</mat-icon></button></h3>
+    </div>
+  </div>
+
+
+</div>

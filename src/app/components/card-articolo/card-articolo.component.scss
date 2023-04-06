@@ -1,11 +1,66 @@
 .card {
   width: 320px;
-  height: 400px;
-  app-immagine{
-    max-width:300px;
-    max-height:200px;
-    margin:0 auto;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(220, 214, 214, 0.922);
+  border: 5px solid #120460;
+  //padding:15px;
+  mat-card-title {
+    background-color: rgba(192, 187, 187, 0.922);
+    width: 300px;
+    height:30px;
+    border-radius: 5px;
+    padding: 5px;
+    overflow: hidden;
+    text-align: center;
+    h2 {
+
+      color: #120460;
+      font-size: 2rem;
+      overflow: hidden;
+
+    text-transform: capitalize;
+      sub {
+        font-size: 0.7rem;
+        color:black;
+      }
+    }
   }
+  mat-card-subtitle{
+    height:20px;
+    margin-top:10px;
+    margin-bottom:10px;
+    padding:5px;
+    background-color: rgba(192, 187, 187, 0.922);
+    font-size: 1.4rem;
+    color:black;
+    font-style: italic;
+    border-radius: 5px;
+    overflow: hidden;
+
+
+
+  }
+
+  #img{
+    height:250px;
+    app-immagine {
+    max-width: 300px;
+    max-height: 200px;
+    margin: 0 auto;
+  }
+}
+  mat-card-actions{
+    //width:100px;
+  button{
+    //width:100px;
+    mat-icon{
+      //font-size: 2rem;
+      color:green;
+    }
+  }
+}
 }
 
 /*.header-image {

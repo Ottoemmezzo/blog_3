@@ -23,17 +23,20 @@ export class UpdArticoloComponent {
   corpo = new FormControl("");
   autore = new FormControl("");
   urlImg = new FormControl("");
+  descrizione= new FormControl("");
   id!: string;
   doc!: Articolo;
   cat!:string;
   constructor(private auth:AngularFireAuth,fb: FormBuilder, private db: DbService, private st: FireStorageService, private router: Router, private route: ActivatedRoute) {
     this.categorie=this.db.categorie;
     this.form = fb.group({
-      "titolo": this.titolo,
-      "categoria": this.categoria,
-      "corpo": this.corpo,
-      "autore": this.autore,
-      "urlImg": this.urlImg
+      "titolo":this.titolo,
+      "categoria":this.categoria,
+      "corpo":this.corpo,
+      //"picker":this.dataCreazione,
+      "urlImg":this.urlImg,
+      //"visibilita":this.visibilita,
+      "descrizione":this.descrizione
 
     });
     this.route.queryParams.subscribe(params => {
@@ -63,7 +66,7 @@ export class UpdArticoloComponent {
   onSubmit() {
 
 
-    this.db.upd(this.id,<string>this.categoria.value,this.form.value);
+    this.db.upd(this.id,'articoli',this.form.value);
 
     //this.articoli.subscribe(res=>ImmagineComponent.articoli=res);
     //this.router.navigate(['/lista']);

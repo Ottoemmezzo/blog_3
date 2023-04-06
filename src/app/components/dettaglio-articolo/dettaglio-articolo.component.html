@@ -1,8 +1,9 @@
 <app-header></app-header>
+<ng-container *ngIf="doc$|async as doc">
 <div class="container">
   <div class="articolo">
     <div class="immagine">
-      <app-immagine [l]="1024"[h]="768" [imgPath]="doc.imgUrl"></app-immagine>
+      <app-immagine [l]="1000"[h]="700" [imgPath]="doc.imgUrl"></app-immagine>
     </div>
     <div class="titolo-articolo">
       <h1>&nbsp;{{doc.titolo}}</h1>
@@ -17,3 +18,4 @@
     </div>
   </div>
 </div>
+</ng-container>

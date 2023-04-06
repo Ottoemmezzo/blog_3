@@ -3,9 +3,26 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-@import "~firebaseui/dist/firebaseui.css";
-//@import "~@angular/material/theming";
 
+//@import "~@angular/material/theming";
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$my-primary: mat.define-palette(mat.$indigo-palette, 500);
+$my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,
+   accent: $my-accent,
+ ),
+ typography: mat.define-typography-config(),
+ density: 0,
+));
+
+@include mat.all-component-themes($my-theme);
+@import "~firebaseui/dist/firebaseui.css";
 
 
 

@@ -8,5 +8,6 @@ export interface Articolo {
   dataCreazione:string,
   idAutore:string,
   pubblicato:boolean,
-  pos:string
+  pos:string,
+  descrizione:string
 }

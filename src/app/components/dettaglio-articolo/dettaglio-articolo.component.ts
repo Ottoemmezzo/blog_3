@@ -18,13 +18,8 @@ export interface Tile {
 })
 export class DettaglioArticoloComponent implements OnInit{
   id!:string;
-  doc!:Articolo;
-  tiles: Tile[] = [
-    {text: 'One', cols: 1, rows: 8, color: 'gray'},
-    {text: 'main', cols: 6, rows: 8, color: 'white'},
-    {text: 'Three', cols: 1, rows: 8, color: 'gray'}
-    //{text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
-  ];
+  doc$!:Observable<Articolo>;
+
   constructor(
     private route: ActivatedRoute,
     private db:DbService
@@ -32,12 +27,16 @@ export class DettaglioArticoloComponent implements OnInit{
   ngOnInit() {
       this.route.queryParams.subscribe(params => {
       this.id = params['id'];
-      this.db.getArt('articoli').subscribe(res=>{
+     /* this.db.get(this.id).subscribe(res=>{
         res.forEach(data=>{
           if(data.id==this.id)this.doc=data;
 
 
-        });
+        });*/
+        console.log("ID:",this.id);
+        this.doc$=this.db.get(this.id) as Observable<Articolo>//.subscribe(a=>this.doc=a as Articolo);
+        this.doc$.subscribe(a=>console.log("arti:",a));
+
 
       });
 
@@ -52,7 +51,7 @@ export class DettaglioArticoloComponent implements OnInit{
 */
 
 
-    });
+   // });
 
   }
 

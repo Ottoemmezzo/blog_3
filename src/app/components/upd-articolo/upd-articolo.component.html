@@ -45,6 +45,10 @@
 
     <div class="testo-articolo">
       <app-immagine *ngIf="updPath" [imgPath]="updPath"></app-immagine>
+      <mat-form-field id="desc" appearance="fill">
+        <mat-label >Descrizione:</mat-label>
+        <textarea  matInput formControlName="descrizione" rows="4" cols="50"></textarea>
+      </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Testo Articolo:</mat-label>
         <textarea matInput formControlName="corpo"></textarea>

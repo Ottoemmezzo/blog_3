@@ -21,7 +21,8 @@ export class ProfileComponent {
  user!:User;
 
   constructor(public afAuth:AngularFireAuth,private st: FireStorageService, private db:DbService){
-    afAuth.authState.subscribe(d=> this.user=d as User);
+    afAuth.authState.subscribe(d=> {this.user=d as User;this.name=this.user.displayName as string});
+
 
   }
 

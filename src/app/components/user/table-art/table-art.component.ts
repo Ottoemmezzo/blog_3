@@ -25,16 +25,20 @@ export class TableArtComponent implements OnInit{
   @Input() bozze:Articolo[]=[];
   @Input() pubblicati:Articolo[]=[];
  // @ViewChild('stella') stella:any;
-  columnsToDisplay = ['titolo', 'dataCreazione', 'categoria'];
-  columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
+
+
   expandedElement!: Articolo | null;
   autore:string='';
   fcolor='white';
   uname:string='';
-  pos=new FormControl("");
+  pos='p';//=new FormControl("");
   //pubblicati:Articolo[]=[];
   userArts:Articolo[]=[];
+  userPubb:Articolo[]=[];
   admin:boolean=false;
+  displayedColumns: string[] = ['titolo', 'dataCreazione', 'autore','azioni'];
+  columnsToDisplay: string[] = this.displayedColumns.slice();
+
 
   constructor(private afAuth:AngularFireAuth,
     private db:DbService,
@@ -44,14 +48,20 @@ export class TableArtComponent implements OnInit{
   }
   ngOnInit(){
     //this.pubblicati$.subscribe(p=>this.pubblicati==p);
-    let i=0;
+
     //Stampa solo articoli utente corrente se copywriter, tutti se admin.
     if(this.uid=='PU4wnyTErROVLLCw66YvcnHorq22')
     {
       this.admin=true;
       this.userArts=this.bozze;
+      this.userPubb=this.pubblicati;
     }
-    else for(let userArt of this.bozze)if(userArt.idAutore==this.uid) this.userArts[i++]=userArt;
+    else {
+      let i=0;
+      for(let userArt of this.bozze)if(userArt.idAutore==this.uid) this.userArts[i++]=userArt;
+      i=0;
+      for(let userPubb of this.pubblicati)if(userPubb.idAutore==this.uid) this.userPubb[i++]=userPubb;
+    }
 
 
 
@@ -66,36 +76,29 @@ export class TableArtComponent implements OnInit{
 
   }
   pubblicaArticolo(art:Articolo){
-    let stella = this.elRef.nativeElement.querySelector('mat-icon');
-
-    if(art.pubblicato==false){
-      stella.color='warn';
-
-      console.log('sono dentro!:');
-
-      art.pos=this.pos.value as string;
-      art.pubblicato=true;
-      console.log('sono dentro!:',art.pos);
-      //this.db.upd(art.id,'articoli',art);
-      this.db.add(art,art.imgUrl,'pubblicati')
-
-
-    }
-    else  {
-      art.pubblicato=false;
-      stella.color='accent';
-      this.db.del(art.id,'pubblicati');
-    }
-    //art.pubblicato=!art.pubblicato;
+    art.pos=this.pos;
+    console.log('sono dentro!:',art.pos);
+    this.db.add(art,art.imgUrl,'pubblicati');
+    this.db.del(art.id,'articoli');
     let i=0;
     for(let a of this.bozze ) {
 
-      if(a.id==art.id) this.bozze[i]=art;
+      if(a.id!=art.id) this.userArts.splice(i);
       i++;
     }
-    this.db.upd(art.id,'articoli',art);
 
 
+  }
+  ritiraArticolo(art:Articolo)
+  {
+    this.db.del(art.id,'pubblicati');
+    this.db.add(art,art.imgUrl,'articoli');
+    let i=0;
+    for(let a of this.userPubb) {
+
+      if(a.id!=art.id) this.userPubb.splice(i);
+      i++;
+    }
   }
   deleteArticolo(id:string,cat:string){
 
