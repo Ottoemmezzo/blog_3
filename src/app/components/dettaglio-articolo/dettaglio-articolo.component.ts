@@ -19,6 +19,7 @@ export interface Tile {
 export class DettaglioArticoloComponent implements OnInit{
   id!:string;
   doc$!:Observable<Articolo>;
+  scelto!:Articolo;
 
   constructor(
     private route: ActivatedRoute,

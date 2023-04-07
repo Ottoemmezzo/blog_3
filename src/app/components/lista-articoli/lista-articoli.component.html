@@ -15,29 +15,39 @@
     </mat-paginator>-->
 <div class="list-group">
   <div class="group-container" *ngFor="let cat of categorie">
+    <h2>{{cat.nome}}</h2>
     <mat-selection-list #art_sel [multiple]="false">
       <ng-container *ngFor="let art of articoli">
         <mat-list-option  *ngIf="art.categoria==cat.nome" [value]="art.id">
            {{art.titolo}}
+
         </mat-list-option >
-      </ng-container>
 
-  </mat-selection-list>
-   <ng-container *ngFor="let art of articoli">
-     <ng-container *ngIf="art.id==art_sel.selectedOptions.selected[0].value">
-      <div id="brief">
-      <div id="desc">
-        <h2>{{art.titolo}}</h2>
-        <h2>{{art.descrizione}}</h2>
-        <app-immagine [imgPath]="art.imgUrl"></app-immagine>
-      </div>
-      <div id="testo">
-        {{art.corpo}}
-      </div>
-      </div>
+
+
      </ng-container>
+  </mat-selection-list>
 
-   </ng-container>
+
+    <div *ngIf="art_sel.selectedOptions.hasValue()">
+        <div *ngFor="let art of articoli">
+          <div *ngIf="art_sel.selectedOptions.selected[0].value==art.id">
+            <div>
+              <h2>{{art.titolo}}</h2>
+              <h3>{{art.descrizione}}</h3>
+              <app-immagine [imgPath]="art.imgUrl"></app-immagine>
+            </div>
+            <div style="overflow: hidden;">
+              <p>
+                {{art.corpo}}
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+    </div>
 
   </div>
 
