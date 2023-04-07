@@ -1,7 +1,10 @@
 .container {
-  height: 100vh;
+  min-height: 100vh;
+  //overflow: scroll;
 
   .articolo {
+    min-height: 100vh;
+    overflow: scroll;
     .immagine {
       margin: 20px auto;
       width: 100%;
