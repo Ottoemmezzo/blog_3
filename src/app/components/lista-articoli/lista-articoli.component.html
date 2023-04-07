@@ -14,7 +14,13 @@
       [pageIndex]="pageIndex" aria-label="Select page">
     </mat-paginator>-->
 <div class="list-group">
-  <div class="group-container" *ngFor="let cat of categorie">
+  <!--<mat-tab-group>
+    <mat-tab label="First"> Content 1 </mat-tab>
+    <mat-tab label="Second"> Content 2 </mat-tab>
+    <mat-tab label="Third"> Content 3 </mat-tab>
+  </mat-tab-group>-->
+  <mat-tab-group>
+  <mat-tab class="group-container" *ngFor="let cat of categorie" [label]="cat.nome">
     <h2>{{cat.nome}}</h2>
     <mat-selection-list #art_sel [multiple]="false">
       <ng-container *ngFor="let art of articoli">
@@ -33,7 +39,7 @@
         <div *ngFor="let art of articoli">
           <div *ngIf="art_sel.selectedOptions.selected[0].value==art.id">
             <div>
-              <h2>{{art.titolo}}</h2>
+              <h2>{{art.titolo}}&nbsp;<button><mat-icon color="primary">read_more</mat-icon></button></h2>
               <h3>{{art.descrizione}}</h3>
               <app-immagine [imgPath]="art.imgUrl"></app-immagine>
             </div>
@@ -41,6 +47,7 @@
               <p>
                 {{art.corpo}}
               </p>
+
             </div>
 
           </div>
@@ -49,6 +56,6 @@
 
     </div>
 
-  </div>
-
+  </mat-tab>
+</mat-tab-group>
 </div>
