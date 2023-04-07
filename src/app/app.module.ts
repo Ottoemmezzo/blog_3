@@ -77,6 +77,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { SezioneComponent } from './components/sezione/sezione.component';
+import { LazTableComponent } from './components/user/laz-table/laz-table.component';
 
 
 
@@ -194,7 +195,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 
 
   ],
-  declarations: [ AppComponent, LandingComponent, ListaArticoliComponent, HeaderComponent, AddComponent, DettaglioArticoloComponent, DelComponent, ImmagineComponent, UpdArticoloComponent, CardArticoloComponent, LoginDialogComponent, RegisterDialogComponent, UserComponent, LoginComponent, TableArtComponent, ProfileComponent, SezioneComponent ],
+  declarations: [ AppComponent, LandingComponent, ListaArticoliComponent, HeaderComponent, AddComponent, DettaglioArticoloComponent, DelComponent, ImmagineComponent, UpdArticoloComponent, CardArticoloComponent, LoginDialogComponent, RegisterDialogComponent, UserComponent, LoginComponent, TableArtComponent, ProfileComponent, SezioneComponent, LazTableComponent ],
   bootstrap: [ AppComponent ],
   providers: [
     //ScreenTrackingService,UserTrackingService,

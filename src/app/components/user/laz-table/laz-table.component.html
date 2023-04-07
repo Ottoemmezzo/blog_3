@@ -1,0 +1,47 @@
+<h2>Bozze</h2>
+<table>
+  <tr>
+    <th>Titolo</th>
+    <th>Autore</th>
+    <th>Creato il</th>
+    <th>Azioni</th>
+  </tr>
+  <tr *ngFor="let item of userArt; let i = index">
+    <td>{{item.titolo}}</td>
+    <td>{{item.autore}}</td>
+    <td>{{item.dataCreazione}}</td>
+    <td>
+       <button (click)="delArticolo(item, i)"><mat-icon color="warn">delete</mat-icon></button>
+       <button (click)="pubblica(item, i)"><mat-icon color="primary">add </mat-icon></button>
+       <button (click)="edit(item)"><mat-icon color="accent">edit</mat-icon></button>
+       <select name="visibilita" id="visibilita" [formControl]="visibilita">
+        <option value="">--Please choose an option--</option>
+        <option value="h1">H1</option>
+        <option value="h2">H2</option>
+        <option value="h3">H3</option>
+        <option value="p">P</option>
+        </select>
+
+    </td>
+  </tr>
+</table>
+<h2>Articoli pubblicati</h2>
+<table *ngIf="uid=='admin'">
+  <tr>
+    <th>Titolo</th>
+    <th>Autore</th>
+    <th>Creato il</th>
+    <th>Visibilità</th>
+    <th>Azioni</th>
+  </tr>
+  <tr *ngFor="let item of pubblicati; let i = index">
+    <td>{{item.titolo}}</td>
+    <td>{{item.autore}}</td>
+    <td>{{item.dataCreazione}}</td>
+    <td>{{item.pos}}</td>
+    <td>
+       <button (click)="delPubbArticolo(item, i)">d</button>
+       <button (click)="ritira(item, i)">d</button>
+    </td>
+  </tr>
+</table>

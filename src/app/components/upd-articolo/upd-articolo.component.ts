@@ -45,7 +45,7 @@ export class UpdArticoloComponent {
       console.log("Update, parametro cat:",this.cat);
 
     });
-    this.db.get(this.id).subscribe((d:any)=>{
+    this.db.get(this.id,'articoli').subscribe((d:any)=>{
       this.doc=d;
       console.log("UPD ART, articolo:",this.doc);
       this.titolo.setValue(this.doc.titolo);

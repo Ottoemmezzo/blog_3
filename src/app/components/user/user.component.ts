@@ -75,7 +75,7 @@ export class UserComponent implements OnInit {
   }
   ngOnInit() {
     //this.db.loadCategorie().subscribe(c => this.categorie = c)
-    this.auth.authState.subscribe(u=>this.uid=u?.uid as string);
+    this.auth.authState.subscribe(u=>{this.uid=u?.uid as string; if (u?.uid=='PU4wnyTErROVLLCw66YvcnHorq22') this.uid='admin'});
     this.articoli$=this.db.getArt('articoli');//.subscribe(r => {this.articoli = r; console.log("Inpu-main:",this.articoli);});
     this.pubblicati$=this.db.getArt('pubblicati');
     //console.log("Inpu-main:",this.articoli);

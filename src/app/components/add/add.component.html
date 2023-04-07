@@ -61,17 +61,20 @@
         <input type="file" #inputFile (change)="uploadFile($event,inputFile.value)">
       </div>
 
+      <div id="desc">
 
 
+      <mat-form-field appearance="fill">
+        <mat-label>Descrizione:</mat-label>
+        <textarea  matInput formControlName="descrizione" rows="2" cols="50"></textarea>
+      </mat-form-field>
+      </div>
       <div class="testo-articolo">
         <app-immagine *ngIf="updPath" [imgPath]="updPath"></app-immagine>
-        <mat-form-field appearance="fill">
-          <mat-label>Descrizione:</mat-label>
-          <textarea matInput formControlName="descrizione"></textarea>
-        </mat-form-field>
+
         <mat-form-field appearance="fill">
           <mat-label>Testo Articolo:</mat-label>
-          <textarea matInput formControlName="corpo"></textarea>
+          <textarea matInput formControlName="corpo" rows="40"></textarea>
         </mat-form-field>
         <div class="form-action">
           <button mat-fab color="primary" type="submit" [disabled]="!form.valid">

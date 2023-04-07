@@ -67,7 +67,7 @@ export class ListaArticoliComponent implements OnInit {
   ngOnInit()
  {
   this.db.loadCategorie().subscribe(c=>this.categorie=c)
-  this.db.getArt('articoli').subscribe(r=>this.articoli=r);
+  this.db.getArt('pubblicati').subscribe(r=>this.articoli=r);
 
 
 }

@@ -103,8 +103,8 @@ export class DbService {
 
 
   }
-  get(id: string) {
-    let path = 'pubblicati/'+id;
+  get(id: string, path:string) {
+    path += '/'+id;
     console.log('SErvice doc-path:', path);
     return this.firestore.doc<Articolo>(path).valueChanges();
     //return this.firestore.doc(`/categorie/${cat}/articoli/${id}`).valueChanges();
