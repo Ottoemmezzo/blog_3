@@ -52,6 +52,7 @@ userArt:Articolo[]=[];
   this.pubblicati.splice(i, 1);
   this.db.del(item.id,'pubblicati');
   this.source.push(item);
+  this.db.add(item,item.imgUrl,'articoli');
   this.ngOnInit();
 
  }

@@ -40,8 +40,8 @@
     <td>{{item.dataCreazione}}</td>
     <td>{{item.pos}}</td>
     <td>
-       <button (click)="delPubbArticolo(item, i)">d</button>
-       <button (click)="ritira(item, i)">d</button>
+       <button (click)="delPubbArticolo(item, i)"><mat-icon color="warn">delete</mat-icon></button>
+       <button (click)="ritira(item, i)"><mat-icon color="accent">remove</mat-icon></button>
     </td>
   </tr>
 </table>
