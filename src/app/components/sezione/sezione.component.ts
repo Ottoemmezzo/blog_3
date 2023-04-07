@@ -30,6 +30,7 @@ export class SezioneComponent implements OnInit, DoCheck{
     console.log("modulo",this.head2.length);
 
     this.totalPage=Math.ceil(modulo);
+    this.loadPage();
 
     //modulo==0?this.totalPage=1:this.totalPage=Math.ound(this.head2.length/3);
 
@@ -74,7 +75,7 @@ export class SezioneComponent implements OnInit, DoCheck{
     this.totalPage=Math.ceil(this.head2.length/3);
     let p=this.curPage;
     if(p+2<=this.head2.length)this.pagina=this.head2.slice(p-1,p+2);
-    else this.pagina=this.head2.slice(p,this.head2.length);
+    else this.pagina=this.head2.slice(p-1,this.head2.length);
 
   }
   pageUp(){
