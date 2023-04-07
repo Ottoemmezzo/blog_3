@@ -35,7 +35,7 @@ export class DettaglioArticoloComponent implements OnInit{
 
         });*/
         console.log("ID:",this.id);
-        this.doc$=this.db.get(this.id,'articoli') as Observable<Articolo>//.subscribe(a=>this.doc=a as Articolo);
+        this.doc$=this.db.get(this.id,'pubblicati') as Observable<Articolo>//.subscribe(a=>this.doc=a as Articolo);
         this.doc$.subscribe(a=>console.log("arti:",a));
 
 

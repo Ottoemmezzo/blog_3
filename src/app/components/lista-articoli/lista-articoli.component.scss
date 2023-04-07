@@ -1,46 +1,11 @@
-.head-lights{
-  width:80%;
-  height:30vh;
-}
-.list-group {
-  width: 80%;
-  //background-color: cadetblue;
+mat-tab-group{
+  width:1200px;
   margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content:center;
-  .group-container {
-    margin: 20px;
-    background-color: rgb(132, 127, 127);
-    color: white;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:flex-start;
-    h2 {
-      text-align: center;
-      width: 100%;
-      background-color: crimson;
-      font-size: 2em;
-
-    }
-        app-card-articolo {
-          margin: 20px;
-        }
-        .paginator {
-          width: 100%;
-          display: flex;
-          justify-content: center;
-        }
-
-  }
 }
-#brief{
-  width:60%;
-  height:400px;
-  overflow: hidden;
+#articolo{
   display:flex;
-  #desc{
-
+  #testo{
+    height:290px;
+    padding:10px;
   }
 }

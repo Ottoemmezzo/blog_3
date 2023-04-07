@@ -19,7 +19,7 @@
     <mat-tab label="Second"> Content 2 </mat-tab>
     <mat-tab label="Third"> Content 3 </mat-tab>
   </mat-tab-group>-->
-  <mat-tab-group>
+  <mat-tab-group >
   <mat-tab class="group-container" *ngFor="let cat of categorie" [label]="cat.nome">
     <h2>{{cat.nome}}</h2>
     <mat-selection-list #art_sel [multiple]="false">
@@ -37,13 +37,13 @@
 
     <div *ngIf="art_sel.selectedOptions.hasValue()">
         <div *ngFor="let art of articoli">
-          <div *ngIf="art_sel.selectedOptions.selected[0].value==art.id">
-            <div>
-              <h2>{{art.titolo}}&nbsp;<button><mat-icon color="primary">read_more</mat-icon></button></h2>
+          <div id="articolo" style="overflow: hidden;" *ngIf="art_sel.selectedOptions.selected[0].value==art.id">
+            <div  >
+              <h2>{{art.titolo}}&nbsp;<button (click)="openArticolo(art.id)"><mat-icon color="primary">read_more</mat-icon></button></h2>
               <h3>{{art.descrizione}}</h3>
               <app-immagine [imgPath]="art.imgUrl"></app-immagine>
             </div>
-            <div style="overflow: hidden;">
+            <div id="testo" style="overflow: hidden;">
               <p>
                 {{art.corpo}}
               </p>
