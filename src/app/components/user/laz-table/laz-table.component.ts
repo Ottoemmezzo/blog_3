@@ -64,4 +64,7 @@ userArt:Articolo[]=[];
   this.router.navigateByUrl(`/update?id=${item.id}&cat=${item.categoria}`);
 
  }
+ mostraArticolo(item:Articolo){
+  this.router.navigateByUrl(`/articolo?id=${item.id}&cat=${item.categoria}`);
+ }
 }

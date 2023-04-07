@@ -1,21 +1,44 @@
 <app-header></app-header>
 <div class="head-lights">
-
 </div>
-<div class="list-group">
-  <div class="group-container" *ngFor="let cat of categorie">
-    <h2>{{cat.nome}}</h2>
+<!--<h2>{{cat.nome}}</h2>
 
     <ng-container *ngFor="let art of articoli">
-      <ng-container *ngIf="art.pubblicato">
+
           <app-card-articolo *ngIf="art.categoria==cat.nome" [cat]="cat.nome" [data]="art"></app-card-articolo>
-      </ng-container>
+
     </ng-container>
     <mat-paginator #paginator class="paginator" (page)="handlePageEvent($event)" [length]="length"
       [pageSize]="pageSize" [disabled]="disabled" [showFirstLastButtons]="showFirstLastButtons"
       [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []" [hidePageSize]="hidePageSize"
       [pageIndex]="pageIndex" aria-label="Select page">
-    </mat-paginator>
+    </mat-paginator>-->
+<div class="list-group">
+  <div class="group-container" *ngFor="let cat of categorie">
+    <mat-selection-list #art_sel [multiple]="false">
+      <ng-container *ngFor="let art of articoli">
+        <mat-list-option  *ngIf="art.categoria==cat.nome" [value]="art.id">
+           {{art.titolo}}
+        </mat-list-option >
+      </ng-container>
+
+  </mat-selection-list>
+   <ng-container *ngFor="let art of articoli">
+     <ng-container *ngIf="art.id==art_sel.selectedOptions.selected[0].value">
+      <div id="brief">
+      <div id="desc">
+        <h2>{{art.titolo}}</h2>
+        <h2>{{art.descrizione}}</h2>
+        <app-immagine [imgPath]="art.imgUrl"></app-immagine>
+      </div>
+      <div id="testo">
+        {{art.corpo}}
+      </div>
+      </div>
+     </ng-container>
+
+   </ng-container>
+
   </div>
 
 </div>
