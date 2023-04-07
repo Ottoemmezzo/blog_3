@@ -23,7 +23,9 @@ userArt:Articolo[]=[];
  }
  ngOnInit(): void {
   if(this.uid=='admin') this.userArt=this.source;
-  else this.source.filter(u=>this.uid==u.idAutore);
+  else {this.source.filter(u=>this.uid==u.idAutore);this.userArt=this.source;};
+  console.log("uid:",this.uid);
+  console.log("source:",this.source);
   this.db.getArt('pubblicati').subscribe(p=> this.pubblicati=p);
 
  }

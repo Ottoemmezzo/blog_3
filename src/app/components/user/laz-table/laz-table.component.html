@@ -12,10 +12,10 @@
     <td>{{item.dataCreazione}}</td>
     <td>
        <button (click)="delArticolo(item, i)"><mat-icon color="warn">delete</mat-icon></button>
-       <button (click)="pubblica(item, i)"><mat-icon color="primary">add </mat-icon></button>
+       <button *ngIf="uid=='admin'" (click)="pubblica(item, i)"><mat-icon color="primary">add </mat-icon></button>
        <button (click)="edit(item)"><mat-icon color="accent">edit</mat-icon></button>
-       <select name="visibilita" id="visibilita" [formControl]="visibilita">
-        <option value="">--Please choose an option--</option>
+       <select *ngIf="uid=='admin'" name="visibilita" id="visibilita" [formControl]="visibilita">
+        <option value="">Visibilità</option>
         <option value="h1">H1</option>
         <option value="h2">H2</option>
         <option value="h3">H3</option>
