@@ -2,7 +2,7 @@
 
   <div class="profile">
     <div id="avatar">
-      <app-immagine *ngIf="state.photoURL" [imgPath]="state.photoURL" [l]="300" [h]="200"> </app-immagine>
+      <app-immagine #img *ngIf="state.photoURL" [imgPath]="state.photoURL" [l]="300" [h]="200"> </app-immagine>
       <label>Selezionare per cambiare immagine</label>
       <input type="file" #inputFile  (change)="uploadFile($event,inputFile.value)">
     </div>
