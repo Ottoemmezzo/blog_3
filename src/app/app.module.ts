@@ -78,6 +78,11 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import { SezioneComponent } from './components/sezione/sezione.component';
 import { LazTableComponent } from './components/user/laz-table/laz-table.component';
+import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
+import { PoliticaComponent } from './components/politica/politica.component';
+import { FilosofiaComponent } from './components/filosofia/filosofia.component';
+import { StoriaComponent } from './components/storia/storia.component';
+import { AttualitaComponent } from './components/attualita/attualita.component';
 
 
 
@@ -137,7 +142,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     /*provideAppCheck(() => initializeAppCheck(
       getApp(), {
       provider: new ReCaptchaV3Provider('6LfzajclAAAAACOMPEeHJd-Vs7_BRjeG0KG6PLVw'),})),*/
-   // provideAnalytics(() => getAnalytics()),
+    provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),
     /*provideAuth(() => {
       let auth = getAuth()
@@ -195,7 +200,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 
 
   ],
-  declarations: [ AppComponent, LandingComponent, ListaArticoliComponent, HeaderComponent, AddComponent, DettaglioArticoloComponent, DelComponent, ImmagineComponent, UpdArticoloComponent, CardArticoloComponent, LoginDialogComponent, RegisterDialogComponent, UserComponent, LoginComponent, TableArtComponent, ProfileComponent, SezioneComponent, LazTableComponent ],
+  declarations: [ AppComponent, LandingComponent, ListaArticoliComponent, HeaderComponent, AddComponent, DettaglioArticoloComponent, DelComponent, ImmagineComponent, UpdArticoloComponent, CardArticoloComponent, LoginDialogComponent, RegisterDialogComponent, UserComponent, LoginComponent, TableArtComponent, ProfileComponent, SezioneComponent, LazTableComponent, ToolBarComponent, PoliticaComponent, FilosofiaComponent, StoriaComponent, AttualitaComponent ],
   bootstrap: [ AppComponent ],
   providers: [
     //ScreenTrackingService,UserTrackingService,

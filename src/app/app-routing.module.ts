@@ -9,13 +9,22 @@ import { LoginComponent } from './components/login/login.component';
 import { UpdArticoloComponent } from './components/upd-articolo/upd-articolo.component';
 import { UserComponent } from './components/user/user.component';
 import { AngularFireAuthGuard, loggedIn, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo, canActivate } from '@angular/fire/compat/auth-guard';
+import { AppComponent } from './app.component';
+import { PoliticaComponent } from './components/politica/politica.component';
+import { StoriaComponent } from './components/storia/storia.component';
+import { FilosofiaComponent } from './components/filosofia/filosofia.component';
+import { AttualitaComponent } from './components/attualita/attualita.component';
 
 const belongsToAccount = (next:any) => hasCustomClaim(`uid:${next.params.id}`);
 
-const routes: Routes = [{path:'', component:LandingComponent},
+const routes: Routes = [{path:'', component: LandingComponent},
 {path:'lista', component:ListaArticoliComponent},
 {path:'add', component:AddComponent, canActivate:[AngularFireAuthGuard]},
  {path:'articolo', component:DettaglioArticoloComponent},
+ {path:'politica', component:PoliticaComponent},
+ {path:'storia', component:StoriaComponent},
+ {path:'filosofia', component:FilosofiaComponent},
+ {path:'attualita', component:AttualitaComponent},
  {path:'update', component:UpdArticoloComponent},
  //{path:'user/:id', component:UserComponent, canActivate:[AngularFireAuthGuard], data:{authGuardPipe:belongsToAccount}},
  {path:'user/:id', component:UserComponent, canActivate:[AngularFireAuthGuard]},

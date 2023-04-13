@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom, isObservable } from 'rxjs';
 import { Articolo } from '../model/articolo';
 import { Categoria } from '../model/categoria';
-
+declare const Zone: any;
 export interface Lista {
   nome: Categoria,
  // articoli$: Observable<Articolo[]>
@@ -103,6 +103,10 @@ export class DbService {
 
 
   }
+  queryCat(cat:string)
+  {
+    return this.firestore.collection('/pubblicati', ref => ref.where('categoria', '==', 'Politica')).valueChanges();
+  }
   get(id: string, path:string) {
     path += '/'+id;
     console.log('SErvice doc-path:', path);
@@ -119,5 +123,24 @@ export class DbService {
     this.firestore.collection('articoli').doc(id).update(newArt);
 
   }
+
+
+async waitFor<T>(prom: Promise<T> | Observable<T>): Promise<T> {
+  if (isObservable(prom)) {
+    prom = firstValueFrom(prom);
+  }
+  const macroTask = Zone.current
+    .scheduleMacroTask(
+      `WAITFOR-${Math.random()}`,
+      () => { },
+      {},
+      () => { }
+    );
+  return prom.then((p: T) => {
+    macroTask.invoke();
+    return p;
+  });
 }
+}
+
 

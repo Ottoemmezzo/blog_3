@@ -23,6 +23,13 @@
         <option value="h3">H3</option>
         <option value="p">P</option>
         </select>
+        <select *ngIf="uid=='admin'" name="categoria" id="categoria" [formControl]="categoria">
+          <option value="">Categoria</option>
+          <option value="Politica">Politica</option>
+          <option value="Storia">Storia</option>
+          <option value="Attualità">Attualità</option>
+          <option value="Filosofia">Filosofia</option>
+          </select>
 
     </td>
   </tr>
@@ -34,6 +41,7 @@
     <th>Autore</th>
     <th>Creato il</th>
     <th>Visibilità</th>
+    <th>Categoria</th>
     <th>Azioni</th>
   </tr>
   <tr *ngFor="let item of pubblicati; let i = index">
@@ -41,6 +49,7 @@
     <td>{{item.autore}}</td>
     <td>{{item.dataCreazione}}</td>
     <td>{{item.pos}}</td>
+    <td>{{item.categoria}}</td>
     <td>
        <button (click)="delPubbArticolo(item, i)"><mat-icon color="warn">delete</mat-icon></button>
        <button (click)="ritira(item, i)"><mat-icon color="accent">remove</mat-icon></button>

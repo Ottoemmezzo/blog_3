@@ -1,21 +1,36 @@
+
 <div id="container">
-  <div id="headline">
-    <app-immagine [l]="420" [h]="330" [imgPath]="head1.imgUrl"></app-immagine>
-    <div id="bodyHead">
-      <h2 id="bhTitolo">{{head1.titolo}}<sup>&nbsp;--by-{{head1.autore}}-&nbsp;il&nbsp;{{head1.dataCreazione}}</sup>
+ <div id="headline">
+
+
+
+    <div id="bodyHead"  >
+      <h2 id="bhTitolo">{{head1[0].titolo}}<sup>&nbsp;--by-{{head1[0].autore}}-&nbsp;il&nbsp;{{head1[0].dataCreazione}}</sup>
       </h2>
-      <h3 id="bhDescrizione">{{head1.descrizione}}</h3>
-      <p>{{head1.corpo}}</p>
+      <h3 id="bhDescrizione">{{head1[0].descrizione}}</h3>
+      <p>{{head1[0].corpo}}</p>
     </div>
-  </div>
-  <div id="mosaico">
-    <!--<h1>aaa</h1>-->
-
-    <app-card-articolo *ngFor="let data of pagina" [data]="data" cat="h3"></app-card-articolo>
-    <div id="paginatore">
-      <h3>Pagina:{{curPage}}-di-{{totalPage}}&nbsp;&nbsp;&nbsp;<button mat-mini-fab (click)="pageDown()"><mat-icon >arrow_back</mat-icon></button>&nbsp;&nbsp;<button mat-mini-fab (click)="pageUp()"><mat-icon >arrow_forward</mat-icon></button></h3>
-    </div>
-  </div>
-
+    <app-immagine  id="h1Img" [l]="420" [h]="330" [imgPath]="head1[0].imgUrl" ></app-immagine>
 
 </div>
+
+  <div id="mosaico">
+    <div id="interno">
+      <app-card-articolo id="card" *ngFor="let a of head2" [data]="a"  (click)="router.navigateByUrl('articolo?id='+a.id)"></app-card-articolo>
+    </div>
+    <div id="paginatore">
+        <div>
+        <button mat-mini-fab (click)="pageDown()"><mat-icon >arrow_back</mat-icon></button>
+        </div>
+        <div id="centro">
+        <h3>&nbsp;&nbsp;Pagina:{{curPage}}-di-{{totalPage}}&nbsp;&nbsp;&nbsp;</h3>
+        </div>
+        <div>
+        <button mat-mini-fab (click)="pageUp()"><mat-icon >arrow_forward</mat-icon></button>
+        </div>
+
+    </div>
+  </div>
+
+</div>
+

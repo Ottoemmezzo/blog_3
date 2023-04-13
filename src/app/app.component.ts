@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import * as firebase from 'firebase/compat/app';
 //import * as firebase from 'firebase/compat';
-import { Observable } from 'rxjs';
+import { Observable, Subject, from, map, take, tap } from 'rxjs';
 import { Articolo } from './model/articolo';
 import { Categoria } from './model/categoria';
 import { DbService, Lista } from './services/db.service';
@@ -17,58 +17,56 @@ export class AppComponent implements OnInit{
   categorie!:Categoria[];
   liste:Lista[]=[];
   articoli:Articolo[]=[];
+  pubblicati$!: Observable<Articolo[]>;
+  chosenCat='Politica';
+  //=new Subject<string>;
+  //chosenCat='Politica';
  /* curLista:Lista={
     nome:{nome:"",imgUrl:"",id:""},
     articoli:[]
   }*/
   constructor(private db:DbService){
-    /*this.db.loadCategorie().subscribe(res=>
-      {
-        this.categorie=res;
-        console.log("cat 0:",this.categorie[0].nome);
+    (<any>window).FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+    /*let p=this.db.getArt('pubblicati');
+    let post= this.db.waitFor(p);
+    post.then((a:Articolo[])=>this.articoli=a);
+    console.log("Articoli:",this.articoli);*/
+    this.pubblicati$=this.db.getArt('/pubblicati');//
+    this.pubblicati$.subscribe(p=>{
+    // console.log("articoli:",p);
 
-        this.db.loadArticoliBy(this.categorie[0].id).subscribe(res=>{
-          this.curLista.nome=this.categorie[0];
-          this.curLista.articoli=res;
-          this.liste.push(this.curLista);
-          console.log("cat 0:",this.categorie[0].nome);
-
-        });
-        this.db.loadArticoliBy(this.categorie[1].id).subscribe(res=>{
-          this.curLista.nome=this.categorie[1];
-          this.curLista.articoli=res;
-          this.liste.push(this.curLista);
-          console.log("cat 1:",this.categorie[1].nome);
-
-        });
-        this.db.loadArticoliBy(this.categorie[2].id).subscribe(res=>{
-          this.curLista.nome=this.categorie[2];
-          this.curLista.articoli=res;
-          this.liste.push(this.curLista);
-          console.log("cat 2:",this.categorie[2].nome);
-
-        });
+     this.articoli=p.filter(f=> f.categoria=='Politica');
+   });
 
 
-        this.db.liste=this.liste;
-      });*/
-
-    /*this.db.categorie$.subscribe(d=>{
-      this.categorie=d;
-      this.db.categorie=d;
-      console.log("root-categorie:",this.db.categorie);
-      this.liste=this.db.loadArticoliBy(this.db.categorie.);
-
-    });*/
 
 
 
   }
-  ngOnInit(){
-    (<any>window).FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+    ngOnInit(){
 
+    /*this.db.queryArt("Politica").subscribe(a=>{
+      console.log("Articli:",a);
+      this.articoli=a});
+    }*/
+    /*this.db.getArt('pubblicati').subscribe(a=> {
+      this.articoli=a;
+      console.log("Articoli:",a);
+
+
+    });*/
+
+  }
+
+loadChosenCat(cat:string){
+  console.log("categoria:",cat);
+  this.chosenCat=cat;
+  //from(cat).subscribe(this.chosenCat);
+  console.log("this.chosenCat:",this.chosenCat);
+  this.ngOnInit();
+
+  //.subscribe(c=>console.log("sottoscritta categoria:",c));
 
 }
-
 
 }

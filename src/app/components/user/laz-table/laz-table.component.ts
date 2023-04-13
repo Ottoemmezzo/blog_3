@@ -16,7 +16,7 @@ export class LazTableComponent implements OnInit{
 pubblicati:Articolo[]=[];
 @Input() uid:string='';
 visibilita=new FormControl("");
-
+categoria=new FormControl("");
 userArt:Articolo[]=[];
  constructor(private router:Router,private afs:AngularFirestore, auth:AngularFireAuth,private db:DbService){
 
@@ -40,6 +40,7 @@ userArt:Articolo[]=[];
   this.source.splice(i,1);
   this.db.del(item.id,'articoli');
   item.pos=this.visibilita.value as string;
+  item.categoria=this.categoria.value as string;
   this.pubblicati.push(item);
   this.db.add(item,item.imgUrl,'pubblicati');
   this.ngOnInit();

@@ -1,21 +1,27 @@
-<mat-card class="card">
-  <mat-card-header>
-    <!--<div mat-card-avatar class="header-image"></div>-->
-    <mat-card-title><h2>{{data.titolo}}<sub>&nbsp;-by-{{data.autore}}&nbsp;il&nbsp;{{data.dataCreazione | date: 'yyyy-MM-dd'}}</sub></h2></mat-card-title>
-    <mat-card-subtitle>{{data.descrizione}}</mat-card-subtitle>
-    <!--<mat-card-subtitle>{{data.dataCreazione}}</mat-card-subtitle>-->
-  </mat-card-header>
-  <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+<div id="card">
   <div id="img">
-    <app-immagine [l]="300" [imgPath]="data.imgUrl"></app-immagine>
+    <app-immagine [l]="280" [imgPath]="data.imgUrl"></app-immagine>
   </div>
+ <!-- <mat-card-header>-->
+    <!--<div mat-card-avatar class="header-image"></div>-->
+    <div id="sezione">
+    <h2 id="titolo">{{data.titolo}}<sub>&nbsp;-by-{{data.autore}}&nbsp;il&nbsp;{{data.dataCreazione | date: 'yyyy-MM-dd'}}</sub></h2>
+    <h3>{{data.descrizione}}</h3>
+    <div id="corpo">
+      {{data.corpo}}
+    </div>
+  </div>
+    <!--<mat-card-subtitle>{{data.dataCreazione}}</mat-card-subtitle>-->
+  <!--</mat-card-header>-->
+  <!--<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">-->
+
  <!-- <mat-card-content>
     {{data.corpo}}
   </mat-card-content>-->
-  <mat-card-actions>
+  <!--<mat-card-actions>-->
     <!--<button mat-icon-button color="warn" (click)="deleteArticolo()"><mat-icon>delete</mat-icon></button>
     <button mat-icon-button color="primary" (click)="updateArticolo()"><mat-icon>edit_square</mat-icon></button>-->
-    <button mat-fab (click)="mostraArticolo()"><mat-icon>read_more</mat-icon></button>
-  </mat-card-actions>
-</mat-card>
+    <!--<button mat-fab (click)="mostraArticolo()"><mat-icon>read_more</mat-icon></button>-->
+  <!--</mat-card-actions>-->
+    </div>
 

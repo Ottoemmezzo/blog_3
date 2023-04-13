@@ -1,0 +1,17 @@
+<mat-toolbar color="accent" id="tool">
+  <button mat-button [matMenuTriggerFor]="aboveMenu">Redazione</button>
+<mat-menu #aboveMenu="matMenu" yPosition="above">
+<button mat-menu-item>Item 1</button>
+<button mat-menu-item>Item 2</button>
+</mat-menu>
+
+<button mat-button [matMenuTriggerFor]="belowMenu">Articoli</button>
+<mat-menu #belowMenu="matMenu" yPosition="below">
+<button mat-menu-item routerLinkActive="active" routerLink="/politica">Politica</button>
+<button mat-menu-item routerLinkActive="active" routerLink="/storia">Storia</button>
+<button mat-menu-item routerLinkActive="active" routerLink="/filosofia"> Filosofia</button>
+<button mat-menu-item routerLinkActive="active" routerLink="/attualita">Attualità</button>
+</mat-menu>
+
+
+</mat-toolbar>

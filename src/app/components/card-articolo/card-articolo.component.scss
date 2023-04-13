@@ -1,69 +1,26 @@
-.card {
-  width: 320px;
-  height: 450px;
-  display: flex;
-  align-items: center;
-  background-color: rgba(220, 214, 214, 0.922);
-  border: 5px solid #120460;
-  //padding:15px;
-  mat-card-title {
-    background-color: rgba(192, 187, 187, 0.922);
-    width: 300px;
-    height:30px;
-    border-radius: 5px;
-    padding: 5px;
-    overflow: hidden;
-    text-align: center;
-    h2 {
+#card{
+  display:flex;
+  flex-wrap: wrap;
+  width:580px;
+  align-items: flex-start;
+  //background-color: aquamarine;
+  /*#img{
 
-      color: #120460;
-      font-size: 2rem;
-      overflow: hidden;
-
-    text-transform: capitalize;
-      sub {
-        font-size: 0.7rem;
-        color:black;
-      }
-    }
-  }
-  mat-card-subtitle{
-    height:20px;
-    margin-top:10px;
-    margin-bottom:10px;
+  }*/
+  #sezione{
+    box-sizing: border-box;
     padding:5px;
-    background-color: rgba(192, 187, 187, 0.922);
-    font-size: 1.4rem;
-    color:black;
-    font-style: italic;
-    border-radius: 5px;
+    height: 200px;
+    width:300px;
     overflow: hidden;
-
-
-
+    //background-color: aqua;
+  #titolo{
+    width:300px;
   }
-
-  #img{
-    height:250px;
-    app-immagine {
-    max-width: 300px;
-    max-height: 200px;
-    margin: 0 auto;
-  }
-}
-  mat-card-actions{
-    //width:100px;
-  button{
-    //width:100px;
-    mat-icon{
-      //font-size: 2rem;
-      color:green;
-    }
+  #corpo{
+    overflow: hidden;
+    width:300px;
+    height: 200px;
   }
 }
 }
-
-/*.header-image {
-  //background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  //background-size: cover;
-}*/
