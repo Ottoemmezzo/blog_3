@@ -1,6 +1,7 @@
-<app-header></app-header>
+<div id="container">
 <app-profile></app-profile>
 <app-laz *ngIf="articoli$ | async as art "[source]="art" [uid]="uid"></app-laz>
+</div>
 <!--<ng-container *ngIf="articoli$ | async as art" >-->
 <!--<ng-container *ngIf="articoli$ | async as  art">
 

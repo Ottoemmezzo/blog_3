@@ -4,7 +4,7 @@
 
 
 
-    <div id="bodyHead"  >
+    <div id="bodyHead" (click)="router.navigateByUrl('articolo?id='+head1[0].id)" >
       <h2 id="bhTitolo">{{head1[0].titolo}}<sup>&nbsp;--by-{{head1[0].autore}}-&nbsp;il&nbsp;{{head1[0].dataCreazione}}</sup>
       </h2>
       <h3 id="bhDescrizione">{{head1[0].descrizione}}</h3>

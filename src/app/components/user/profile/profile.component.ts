@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ImmagineComponent } from '../../immagine/immagine.component';
 import { NgModel } from '@angular/forms';
@@ -19,6 +19,7 @@ export class ProfileComponent {
  name:string='';
  articoli:Articolo[]=[];
  user!:User;
+ @ViewChild('img') img!:ImmagineComponent;
 
   constructor(public afAuth:AngularFireAuth,private st: FireStorageService, private db:DbService){
     afAuth.authState.subscribe(d=> {this.user=d as User;this.name=this.user.displayName as string});
@@ -32,11 +33,13 @@ export class ProfileComponent {
 
     this.st.uploadFile(event, this.updPath)
     this.imgUrl = this.updPath;
+    /*this.img.imgPath=this.imgUrl;
+    this.img.ngOnInit();*/
   }
   saveProfile()
   {
     this.afAuth.authState.subscribe(d=>{
-      d?.updateProfile({displayName:this.name,photoURL:d.photoURL? d.photoURL: this.imgUrl});
+      d?.updateProfile({displayName:this.name,photoURL: this.imgUrl});
    /* this.db.getArt().subscribe(a=>this.articoli=a);
     this.articoli.map(a=> if(a.autore==this.user.uid) {
 
