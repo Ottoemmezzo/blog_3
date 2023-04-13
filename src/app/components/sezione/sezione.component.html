@@ -16,7 +16,7 @@
 
   <div id="mosaico">
     <div id="interno">
-      <app-card-articolo id="card" *ngFor="let a of head2" [data]="a"  (click)="router.navigateByUrl('articolo?id='+a.id)"></app-card-articolo>
+      <app-card-articolo id="card" *ngFor="let a of pagina" [data]="a"  (click)="router.navigateByUrl('articolo?id='+a.id)"></app-card-articolo>
     </div>
     <div id="paginatore">
         <div>
