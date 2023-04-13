@@ -147,7 +147,7 @@ export class SezioneComponent implements OnInit, DoCheck{
 
   }
   loadPage(){
-    this.totalPage=Math.floor(this.head2.length/4);
+    this.totalPage=Math.ceil((this.head2.length+1)/4);
     let p=this.index;
     if(p<=this.head2.length)this.pagina=this.head2.slice(p,p+4);
     else this.pagina=this.head2.slice(p,this.head2.length);
