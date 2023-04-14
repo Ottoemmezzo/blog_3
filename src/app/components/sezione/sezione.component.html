@@ -1,6 +1,6 @@
 
 <div id="container">
- <div id="headline">
+ <div id="headline" *ngIf="head1[0]">
 
 
 
@@ -14,9 +14,9 @@
 
 </div>
 
-  <div id="mosaico">
-    <div id="interno">
-      <app-card-articolo id="card" *ngFor="let a of pagina" [data]="a"  (click)="router.navigateByUrl('articolo?id='+a.id)"></app-card-articolo>
+  <div id="mosaico" *ngIf="pagina">
+    <div id="interno" >
+      <app-card-articolo  id="card" *ngFor="let a of pagina" [data]="a"  (click)="router.navigateByUrl('articolo?id='+a.id)"></app-card-articolo>
     </div>
     <div id="paginatore">
         <div>

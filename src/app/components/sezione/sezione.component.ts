@@ -149,18 +149,18 @@ export class SezioneComponent implements OnInit, DoCheck{
   loadPage(){
     this.totalPage=Math.ceil((this.head2.length+1)/4);
     let p=this.index;
-    if(p<=this.head2.length)this.pagina=this.head2.slice(p,p+4);
-    else this.pagina=this.head2.slice(p,this.head2.length);
+    if(p<this.head2.length)this.pagina=this.head2.slice(p,p+4);
+    else this.pagina=this.head2.slice(p,this.head2.length-1);
 
   }
   pageUp(){
-    if(this.index<=this.head2.length-3){this.index+=3;this.curPage++;}
+    if(this.index<=this.head2.length-3){this.index+=4;this.curPage++;}
     console.log("pagina",this.curPage);
 
     this.loadPage();
   }
   pageDown(){
-    if(this.index>=3){this.index-=3;this.curPage--}
+    if(this.index>=3){this.index-=4;this.curPage--}
     this.loadPage();
 
   }
