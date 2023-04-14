@@ -154,13 +154,13 @@ export class SezioneComponent implements OnInit, DoCheck{
 
   }
   pageUp(){
-    if(this.index<=this.head2.length-3){this.index+=4;this.curPage++;}
+    if(this.index<this.head2.length-3){this.index+=4;this.curPage++;}
     console.log("pagina",this.curPage);
 
     this.loadPage();
   }
   pageDown(){
-    if(this.index>=3){this.index-=4;this.curPage--}
+    if(this.index>3){this.index-=4;this.curPage--}
     this.loadPage();
 
   }
